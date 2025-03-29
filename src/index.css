@@ -1,0 +1,12 @@
+:root{
+  --radius:10px;
+}
+*,::after,::before{
+  margin: 0;
+  padding-inline: 0;
+  box-sizing: border-box;
+  font-family: Verdana, sans-serif;
+}
+body{
+  background-color: #fff;
+}
