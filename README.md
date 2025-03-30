@@ -70,7 +70,7 @@ To run the project locally, follow these steps:
 
 #### Clone the Repository  
 ```sh
-git clone https://github.com/VISHALKANNAN070/Poshan-Tracker.git
+git clone https://github.com/Pradeep5377/Poshan-Tracker
 ```
 
 #### Navigate to the Project Directory  
