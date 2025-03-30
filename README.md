@@ -102,7 +102,7 @@ http://localhost:5173
 
 This project is developed and maintained by **Team Zenith**:
 
-[Pradeep](https://github.com/Pradeep5377)
+[Vishal Kannan](https://github.com/VISHALKANNAN070)
 
 [Vignesh](https://github.com/vickyy234)
 
