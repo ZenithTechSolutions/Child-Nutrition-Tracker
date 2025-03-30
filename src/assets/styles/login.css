@@ -20,6 +20,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .rightside-container {
   display: flex;
   flex-direction: column;
