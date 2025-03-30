@@ -1,11 +1,11 @@
 import React from 'react'
-import ScrollToTop from './components/ScrollToTop'
+// import ScrollToTop from './components/ScrollToTop'
 import Login from './components/login'
 
 const App = () => {
   return (
     <>
-      <ScrollToTop/>
+      {/* <ScrollToTop/> */}
       <Login />
     </>
   )
