@@ -1,0 +1,133 @@
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.login-leftside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-rightside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightside-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 400px;
+  text-align: center;
+  background-color: #c9dcfc94;
+  border-radius: 15px;
+  height: 550px;
+  padding: 30px;
+}
+
+.login-slider {
+  display: flex;
+  width: 280px;
+  background-color: #fff;
+  color: black;
+  border-radius: var(--radius);
+  position: relative;
+  height: 50px;
+  align-items: center;
+}
+
+.login-bg {
+  position: absolute;
+  margin: 6px;
+  left: 0px;
+  width: 50%;
+  height: 40px;
+  background-color: #e1dfdf;
+  border-radius: 10px;
+  transition: 0.4s ease-in-out;
+  z-index: 0;
+}
+
+.move-right {
+  left: 46%;
+}
+
+.login-btn-1,
+.login-btn-2 {
+  width: 50%;
+  padding: 10px 0;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.login-details input[type="tel"] {
+  width: 250px;
+  height: 50px;
+  border-radius: var(--radius);
+  border: 2px solid #555;
+}
+
+.form-container {
+  padding: 20px;
+  border-radius: var(--radius);
+  width: 320px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: var(--radius);
+  margin-bottom: 15px;
+  border: 1px solid #555;
+}
+
+.icon {
+  font-size: 20px;
+  color: #555;
+  border-left: 1px solid #a1a1a1;
+  padding-left: 14px;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.input-field label {
+  font-size: 12px;
+  color: gray;
+  display: block;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.input-field input {
+  border: none;
+  outline: none;
+  font-size: 12px;
+  width: 100%;
+  padding: 5px 0;
+  padding-left: 10px;
+}
+
+.forgot-link {
+  text-align: right;
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+}
