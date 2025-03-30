@@ -3,9 +3,9 @@ import Login from './assets/components/login'
 
 const App = () => {
   return (
-<>
-<Login />
-</>
+    <>
+      <Login />
+    </>
   )
 }
 

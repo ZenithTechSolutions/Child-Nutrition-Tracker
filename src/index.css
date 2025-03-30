@@ -1,12 +1,16 @@
-:root{
-  --radius:10px;
+:root {
+  --radius: 10px;
 }
-*,::after,::before{
+
+*,
+::after,
+::before {
   margin: 0;
   padding-inline: 0;
   box-sizing: border-box;
   font-family: Verdana, sans-serif;
 }
-body{
+
+body {
   background-color: #fff;
 }
