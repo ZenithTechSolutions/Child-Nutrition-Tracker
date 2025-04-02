@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaPhone } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
-import { Link } from "react-router-dom";
+import {Link} from 'react-dom'
 import "../styles/login.css";
 
 const Login = () => {
@@ -59,13 +59,12 @@ const Login = () => {
               </div>
   
               {login && <p className="forgot-link">Forgot MPIN?</p>}
-              <button>{login ? "Login" : "Register"}</button>
+              <button><Link to='/home'></Link>{login ? "Login" : "Register"}</button>
             </div>
-  
-            <p>Don't have an account?<a href="#></a></p>
-          </div>
+  <p>Don't Have An Account? <a href="#">Sign In</a> </p>
+            </div>
         </div>
       </div>
     );
   };
-export default Login;      
+export default Login;
