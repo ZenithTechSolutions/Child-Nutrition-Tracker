@@ -1,16 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone } from "@fortawesome/free-solid-svg-icons"; 
+import { faPhone, faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import '../styles/header.css'
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
-        <div className="header">
-                <p>Micro, Small and Medium Enterprises</p>
-                <div className="helpline">
-                    <FontAwesomeIcon icon={faPhone} style={{ color: "#fff" }} />
-                    <p>HelpLine : 14408</p>
-            </div>
-        </div>
+        <>
+            <header className="header">
+                <p id="header-title">Micro, Small and Medium Enterprises</p>
+                <div className="header-profile">
+                    <p><Link to="/home">Home</Link></p>
+                    <p><Link to="/login">Login/Register </Link></p>
+                    <FontAwesomeIcon icon={faCircleUser} style={{ color: "#fff" ,fontSize:"30px" }} />
+                </div>
+            </header>
+        </>
+
     );
 };
 

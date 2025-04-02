@@ -1,22 +1,10 @@
-import React, { useState } from "react";
 import { FaPhone } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { Link } from 'react-router-dom'
 import "../styles/login.css";
 
 const Login = () => {
-  const [login, setLogin] = useState(true);
-  const [signIn, setSignIn] = useState(false);
 
-  const handleLogin = () => {
-    setLogin(true);
-    setSignIn(false);
-  };
-
-  const handleSignIn = () => {
-    setSignIn(true);
-    setLogin(false);
-  };
   return (
     <div className="login-container">
       <div className="login-leftside">
@@ -30,22 +18,16 @@ const Login = () => {
           <p>Please enter your details below</p>
 
 
-          <div className="login-slider">
-            <div className={`login-bg ${signIn ? "move-right" : ""}`}></div>
-            <div className="login-btn-1" onClick={handleLogin}>
+            <div className="login-btn">
               <p>Login</p>
             </div>
-            <div className="login-btn-2" onClick={handleSignIn}>
-              <p>Sign In</p>
-            </div>
-          </div>
 
           <div className="form-container">
             <div className="input-box">
               <FaPhone className="icon" />
               <form>
                 <label>Mobile Number</label>
-                <input type="tel" placeholder={login ? "+91 XXXXXXXXXX" : "Enter your number"} />
+                <input type="tel" placeholder="+91 XXXXXXXXXX" />
               </form>
             </div>
 
@@ -53,19 +35,19 @@ const Login = () => {
               <MdPassword className="icon" />
               <form>
                 <label>
-                  {login ? "MPIN" : "Generate MPIN"} <span className="required">*</span>
+                  MPIN<span className="required">*</span>
                 </label>
                 <input type="password" placeholder="_ _ _ _" />
               </form>
             </div>
 
-            {login && <p className="forgot-link">Forgot MPIN?</p>}
+            <p className="forgot-link">Forgot MPIN?</p>
 
-            <Link to="/home">
-              <button>{login ? "Login" : "Register"}</button>
+            <Link to="/">
+              <button>Login</button>
             </Link>
           </div>
-          <p>Don't Have An Account? <a href="#">Sign In</a> </p>
+          <p>Don't Have An Account? <a href="#">Register</a> </p>
         </div>
       </div>
     </div>

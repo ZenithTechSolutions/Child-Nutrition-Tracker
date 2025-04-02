@@ -11,9 +11,15 @@
     color: white;
 }
 
-.helpline {
+.header-profile{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+}
+
+#header-title{
+    /* font-size: 18px; */
+    font-weight: 500;
+    letter-spacing: 1px;
 }
