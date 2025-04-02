@@ -1,6 +1,7 @@
+import Header from './header'
 const Home=()=>{
     return(
-        <div><p>hello</p></div>
+        <Header/>
     )
 }
 export default Home
