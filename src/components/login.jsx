@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaPhone } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
-import {Link} from 'react-dom'
+import {Link} from 'react-router-dom'
 import "../styles/login.css";
 
 const Login = () => {
