@@ -1,12 +1,15 @@
 import React from 'react'
-// import ScrollToTop from './components/ScrollToTop'
 import Login from './components/login'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/home";
 
 const App = () => {
   return (
     <>
-      {/* <ScrollToTop/> */}
-      <Login />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
     </>
   )
 }

@@ -82,6 +82,15 @@
   border-radius: var(--radius);
   width: 320px;
 }
+.form-container button{
+  width: 280px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #0047f9;
+  color: white;
+}
 
 .input-box {
   display: flex;
@@ -130,4 +139,7 @@ form input {
   color: black;
   font-size: 14px;
   cursor: pointer;
+}
+.rightside-container a{
+  color: #0047f9;
 }
