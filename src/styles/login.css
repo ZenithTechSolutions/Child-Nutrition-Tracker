@@ -36,7 +36,7 @@
 
 .login-slider {
   display: flex;
-  width: 280px;
+  width: 200px;
   background-color: #fff;
   color: black;
   border-radius: var(--radius);
