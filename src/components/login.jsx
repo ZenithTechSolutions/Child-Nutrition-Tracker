@@ -29,6 +29,7 @@ const Login = () => {
           <h3>WELCOME BACK</h3>
           <p>Please enter your details below</p>
 
+
           <div className="login-slider">
             <div className={`login-bg ${signIn ? "move-right" : ""}`}></div>
             <div className="login-btn-1" onClick={handleLogin}>
@@ -59,6 +60,7 @@ const Login = () => {
             </div>
 
             {login && <p className="forgot-link">Forgot MPIN?</p>}
+
             <Link to="/home">
               <button>{login ? "Login" : "Register"}</button>
             </Link>
