@@ -9,7 +9,7 @@ const Header = () => {
             <header className="header">
                 <p id="header-title">Micro, Small and Medium Enterprises</p>
                 <div className="header-profile">
-                    <p><Link to="/home">Home</Link></p>
+                    <p><Link to="/">Home</Link></p>
                     <p><Link to="/login">Login/Register </Link></p>
                     <FontAwesomeIcon icon={faCircleUser} style={{ color: "#fff" ,fontSize:"30px" }} />
                 </div>
