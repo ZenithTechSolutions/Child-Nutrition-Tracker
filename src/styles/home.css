@@ -60,4 +60,12 @@
     font-size: 1rem;
     background-color: var(--button-color);
     border: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.home-card-btn:hover{
+    background-color: var(--white);
+    color: var(--button-color);
+    border: black;
 }
