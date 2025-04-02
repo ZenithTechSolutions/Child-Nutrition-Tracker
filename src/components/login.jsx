@@ -45,49 +45,45 @@ const Login = () => {
               <>
                 <div className="input-box">
                   <FaPhone className="icon" />
-                  <div className="input-field">
+                  <form >
                     <label>Mobile Number</label>
                     <input type="tel" placeholder="+91 XXXXXXXXXX" />
-                  </div>
+                  </form>
                 </div>
 
                 <div className="input-box">
                   <MdPassword className="icon" />
-                  <div className="input-field">
+                  <form >
                     <label>
                       MPIN <span className="required">*</span>
                     </label>
-                    <input type="password" placeholder="----" />
-                  </div>
+                    <input type="password" placeholder="_ _ _ _" />
+                  </form>
                 </div>
-
                 <p className="forgot-link">Forgot MPIN?</p>
               </>
             ) : (
               <>
                 <div className="input-box">
                   <FaPhone className="icon" />
-                  <div className="input-field">
+                  <form >
                     <label>Mobile Number</label>
                     <input type="tel" placeholder="Enter your number" />
-                  </div>
+                  </form>
                 </div>
 
                 <div className="input-box">
                   <MdPassword className="icon" />
-                  <div className="input-field">
+                  <form >
                     <label>
-                      Password <span className="required">*</span>
+                      Generate MPIN <span className="required">*</span>
                     </label>
-                    <input type="password" placeholder="Enter password" />
-                  </div>
+                      <input type="password" placeholder="_ _ _ _" />
+                  </form>
                 </div>
-
-                <p className="forgot-link">Forgot Password?</p>
               </>
             )}
           </div>
-
           <p>
             Don't have an account? <a href="#">Sign In</a>
           </p>
