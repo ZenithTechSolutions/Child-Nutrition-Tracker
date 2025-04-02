@@ -1,13 +1,19 @@
-.header{
+.header {
+    margin: 0;
+    padding: 20px;
     width: 100vw;
-    height: 40px;
-    border: 1px solid black;
+    height: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    background: linear-gradient(to right, #ffbd45, #ff4e6d);
+    color: white;
 }
-.helpline{
+
+.helpline {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 10px;
 }
