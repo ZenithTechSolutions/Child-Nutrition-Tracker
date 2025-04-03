@@ -100,15 +100,9 @@ http://localhost:5173
 
 ## Team & Contributors  
 
-This project is developed and maintained by **Team Zenith**:
+This project is developed and maintained by [Team ZENITH](https://zenith-chi-six.vercel.app/):  
 
-[Vishal Kannan](https://github.com/VISHALKANNAN070)
-
-[Vignesh](https://github.com/vickyy234)
-
-[Giri Prasath](https://github.com/Giriprasath1726)
-
-[Sadhur](https://github.com/Sadhurnithy)
+**[Pradeep](https://github.com/Pradeep5377)** | **[Vishal Kannan](https://github.com/VISHALKANNAN070)** | **[Vignesh](https://github.com/vickyy234)** | **[Giri Prasath](https://github.com/Giriprasath1726)** | **[Sadhur](https://github.com/Sadhurnithy)**   
 
 ## Live Preview  
 
@@ -117,6 +111,6 @@ The Website is live and accessible here:
 
 ## License
 
-Copyright © 2025
-Developed with passion by [Team Zenith](https://zenith-chi-six.vercel.app/). All rights reserved.
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.  
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
