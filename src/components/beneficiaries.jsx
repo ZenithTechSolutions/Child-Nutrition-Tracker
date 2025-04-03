@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "../styles/beneficiaries.css";
 const Beneficiaries = () => {
   const [add, setAdd] = useState(false); //Open Add Students Menu
@@ -13,7 +13,14 @@ const Beneficiaries = () => {
     address: "",
     contact: "",
   });
-  const [record, setRecord] = useState([]); //To Add New Data
+  const [record, setRecord] = useState(() => {
+    const savedRecords = localStorage.getItem("students");
+    return savedRecords ? JSON.parse(savedRecords) : [];
+  }); //To Add New Data
+
+  useEffect(() => {
+    localStorage.setItem("students", JSON.stringify(record));
+  }, [record]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,13 +28,13 @@ const Beneficiaries = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); 
-  
+    event.preventDefault();
+
     if (Object.values(data).some((field) => !field || field.trim() === "")) {
       alert("All fields are required.");
       return;
     }
-  
+
     setRecord([...record, data]); // Store form data in array
     setData({
       name: "",
@@ -39,9 +46,9 @@ const Beneficiaries = () => {
       address: "",
       contact: "",
     }); // Reset form
-    setAdd(false)
+    setAdd(false);
   };
-  
+
   const handleAdd = () => {
     setAdd(!add);
   };
@@ -138,7 +145,7 @@ const Beneficiaries = () => {
                     required
                   />
                   <div className="bene-stu-details-btn">
-                    <input type="submit" className="submit" value="Submit"/>
+                    <input type="submit" className="submit" value="Submit" />
                     <input
                       type="button"
                       className="cancel"
@@ -153,7 +160,7 @@ const Beneficiaries = () => {
               <h6>Total Children Count : {record.length}</h6>
             </div>
             <div className="bene-list">
-              {record.map((item,index)=>(
+              {record.map((item, index) => (
                 <div className="bene-detail" key={index}>
                   <p>{item.name}</p>
                   <p>{item.age}</p>
