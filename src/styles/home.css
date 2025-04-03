@@ -1,5 +1,6 @@
 :root {
   --button-color: #ffa500;
+  --hoverbutton-color: #ffa273;
   --home-heading-color: #a52a2a;
 }
 
@@ -8,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  padding-top: 10px;
+  padding-bottom: 45px;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
@@ -56,15 +57,17 @@
 .home-card-btn {
   width: 120px;
   height: 42px;
-  border-radius: 25px;
+  border-radius: 10px;
   color: var(--white);
   font-weight: 500;
   font-size: 0.9rem;
   background-color: var(--button-color);
   border: none;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in;
   cursor: pointer;
 }
 .home-card-btn:hover{
+  background-color: white;
+  border:2px solid var(--button-color );
   color: var(--home-heading-color);
 }
