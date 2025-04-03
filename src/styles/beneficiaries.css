@@ -1,106 +1,151 @@
+/* --- General Styling --- */
 .bene-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 25px;
+  margin: 40px auto;
   border-radius: 12px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #ffffff;
+  max-width: 900px;
+  padding: 20px;
 }
+
 .bene-content {
   padding: 30px;
-  height: 100vh;
-  width: 800px;
+  min-height: 90vh;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
+
 .bene-add-student {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-  height: 100px;
-  width: 600px;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 650px;
+  background-color: #f8f9fa;
+  padding: 15px 25px;
   border-radius: 15px;
-  gap: 20px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
   position: relative;
 }
+
 .bene-add-student h2 {
-  font-size: 2.6rem;
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
 }
+
 .bene-add-student span {
-  font-size: 2.6rem;
+  font-size: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   border: 3px solid black;
-  height: 40px;
-  text-align: center;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.bene-add-student span:hover {
+  background-color: black;
+  color: white;
+}
+
+/* --- Form Styling --- */
+.bene-stu-details {
+  position: absolute;
+  top: 110%;
+  width: 100%;
+  max-width: 550px;
+  background-color: #fff;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.bene-stu-details form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.bene-stu-details form label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.bene-stu-details form input,
+.bene-stu-details form textarea {
+  width: 100%;
+  height: 45px;
+  border: 2px solid #808080;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  transition: 0.3s ease-in-out;
+}
+
+.bene-stu-details form input:focus,
+.bene-stu-details form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.bene-stu-details form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.dates,
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.numbers input {
+  width: calc(33.3% - 15px);
+}
+
+.bene-stu-details form button {
+  width: 100%;
+  height: 50px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.bene-stu-details form button:hover {
+  background-color: #0056b3;
 }
 
 .bene-count {
-  width: 300px;
-  height: 60px;
+  width: 100%;
+  max-width: 350px;
+  height: 70px;
   background-color: #c0eaff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
   border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-.bene-stu-details {
-  position: absolute;
-  top: 0%;
-  transform: translateY(-50);
-  width: 500px;
-  height: 600px;
-  background-color: #fff;
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-}
-.dates {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
-.bene-stu-details form label {
-  font-size: 1rem;
-  color: black;
-}
-.numbers {
-  display: flex;
-  flex-direction: row;
-}
-
-.bene-stu-details form input[type="text"] {
-  width: 300px;
-  height: 40px;
-  border: 2px solid #808080;
-  font-size: 1rem;
-  border-radius: 10px;
-}
-.bene-stu-details form input[type="number"] {
-  width: 80px;
-  height: 40px;
-  border: 2px solid #808080;
-  font-size: 0.8rem;
-  border-radius: 10px;
-}
-.bene-stu-details form input[type="tel"] {
-  width: 300px;
-  height: 40px;
-  border: 2px solid #808080;
-  font-size: 0.8rem;
-  border-radius: 10px;
-} 
-
