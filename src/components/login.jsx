@@ -2,9 +2,14 @@ import { FaPhone } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { Link } from 'react-router-dom'
 import "../styles/login.css";
+import { useState } from "react";
 
-const Login = () => {
-
+const Login = ({setLogin,setText}) => {
+  const [input, setInput] = useState("");
+  const handleInput=()=>{
+    setLogin(true);
+    setText(input);
+}
   return (
     <div className="login-container">
       <div className="login-leftside">
@@ -27,7 +32,7 @@ const Login = () => {
               <FaPhone className="icon" />
               <form>
                 <label>Mobile Number</label>
-                <input type="tel" placeholder="+91 XXXXXXXXXX" />
+                <input type="tel" placeholder="+91 XXXXXXXXXX" value={input} onChange={(e)=>setInput(e.target.value)}/>
               </form>
             </div>
 
@@ -44,7 +49,7 @@ const Login = () => {
             <p className="forgot-link">Forgot MPIN?</p>
 
             <Link to="/">
-              <button>Login</button>
+              <button onClick={handleInput}>Login</button>
             </Link>
           </div>
           <p>Don't Have An Account? <a href="#">Register</a> </p>

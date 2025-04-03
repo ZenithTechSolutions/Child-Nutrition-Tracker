@@ -10,7 +10,6 @@ const Beneficiaries = () => {
   const count = 6;
   return (
     <>
-      <Header />
       <div className="box">
         <div className="bene-container">
           <div className="bene-content">

@@ -17,7 +17,6 @@ const Home = () => {
   ];
   return (
     <>
-      <Header />
       <div className="box">
       <div className="home-container">
         <p>
