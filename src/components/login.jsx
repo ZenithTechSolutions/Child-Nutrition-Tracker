@@ -32,7 +32,7 @@ const Login = ({setLogin,setText}) => {
               <FaPhone className="icon" />
               <form>
                 <label>Mobile Number</label>
-                <input type="tel" placeholder="+91 XXXXXXXXXX" value={input} onChange={(e)=>setInput(e.target.value)}/>
+                <input type="tel" placeholder="+91 XXXXXXXXXX" value={input} onChange={(e)=>setInput(e.target.value)} />
               </form>
             </div>
 

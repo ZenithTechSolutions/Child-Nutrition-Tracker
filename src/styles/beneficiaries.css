@@ -73,7 +73,7 @@
   gap: 20px;
 }
 
-form label {
+.bene-stu-details form label {
   font-size: 1rem;
   color: black;
 }
@@ -82,21 +82,21 @@ form label {
   flex-direction: row;
 }
 
-form input[type="text"] {
+.bene-stu-details form input[type="text"] {
   width: 300px;
   height: 40px;
   border: 2px solid #808080;
   font-size: 1rem;
   border-radius: 10px;
 }
-form input[type="number"] {
+.bene-stu-details form input[type="number"] {
   width: 80px;
   height: 40px;
   border: 2px solid #808080;
   font-size: 0.8rem;
   border-radius: 10px;
 }
-form input[type="tel"] {
+.bene-stu-details form input[type="tel"] {
   width: 300px;
   height: 40px;
   border: 2px solid #808080;
