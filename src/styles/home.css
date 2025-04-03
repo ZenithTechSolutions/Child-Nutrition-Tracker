@@ -65,3 +65,6 @@
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
+.home-card-btn:hover{
+  color: var(--home-heading-color);
+}

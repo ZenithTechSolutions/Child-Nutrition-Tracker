@@ -26,7 +26,7 @@ const Home = () => {
         {menu.map((item, index) => (
             <div key={index} className="home-card">
               <img src={item.img} alt={item.name} />
-              <Link to="/{item.link}">
+              <Link to={`/${item.link}`}>
                 <button className="home-card-btn">{item.name}</button>
               </Link>
             </div>
