@@ -65,9 +65,8 @@ const Beneficiaries = () => {
               <h2>Add Student Details</h2>
               <span onClick={handleAdd}>+</span>
               <div
-                className={`${
-                  add ? "bene-stu-details" : "bene-stu-details-hidden"
-                }`}
+                className={`${add ? "bene-stu-details" : "bene-stu-details-hidden"
+                  }`}
               >
                 <form action="POST" onSubmit={handleSubmit}>
                   <label htmlFor="name">Name:</label>
@@ -98,6 +97,7 @@ const Beneficiaries = () => {
                         value={data.doj}
                         required
                         onChange={handleInputChange}
+                        max={new Date().toISOString().split("T")[0]}
                       />
                     </div>
                   </div>
