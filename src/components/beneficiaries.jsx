@@ -4,8 +4,7 @@ import Header from "./header";
 const Beneficiaries = () => {
   const [add, setAdd] = useState(false);
   const handleAdd = () => {
-    setAdd(true);
-    console.log(add);
+    setAdd(!add);
   };
   const count = 6;
   return (
@@ -16,7 +15,7 @@ const Beneficiaries = () => {
             <div className="bene-add-student">
               <h2>Add Student Details</h2>
               <span onClick={handleAdd}>+</span>
-              <div className="bene-stu-details">
+              <div className={`${add ? "bene-stu-details" : "bene-stu-details-hidden"}`}>
                 <form action="POST">
                   <label htmlFor="name">Name:</label>
                   <input
@@ -73,8 +72,8 @@ const Beneficiaries = () => {
                     required
                   />
                  <div className="bene-stu-details-btn">
-                 <button className="submit" >Submit</button>
-                 <button className="cancel">Cancel</button>
+                 <input type="submit" className="submit" value="Submit" />
+                 <input type="submit" className="cancel" value="Cancel" onClick={handleAdd}/>
                  </div>
                 </form>
               </div>
