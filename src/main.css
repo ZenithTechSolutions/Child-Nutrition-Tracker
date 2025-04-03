@@ -15,9 +15,6 @@
 }
 
 body {
-  background-color: #fff;
   scroll-behavior: smooth;
-}
-.box{
   background-color: beige;
 }

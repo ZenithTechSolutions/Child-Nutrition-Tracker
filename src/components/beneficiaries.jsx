@@ -1,8 +1,9 @@
-import React from "react";
 import '../styles/beneficiaries.css'
+import Header from './header'
 const Beneficiaries = () => {
   return (
     <>
+    <Header />
       <div className="box">
         <div className="bene-container">
           <div className="bene-add-student">
