@@ -41,7 +41,7 @@ This project aims to provide an intelligent system for individuals, healthcare p
 - **Integration with Health Devices** – Sync with wearables for accurate tracking.  
 - **Community & Support** – Connect with nutritionists and health experts.  
 
-For more details, visit our official **[Project Website]((https://zenith-chi-six.vercel.app/))**  
+For more details, visit our official **[Project Website](https://child-nutrition-tracker.vercel.app/)**  
 
 ## Key Features  
 
