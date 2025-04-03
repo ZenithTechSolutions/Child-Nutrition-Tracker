@@ -1,4 +1,4 @@
-# Poshan-Tracker
+# Child Nutrition Tracker
 
 Welcome to the official repository of **Poshan-Tracker**, a cutting-edge platform dedicated to monitoring and enhancing **nutrition tracking, dietary analysis, and health recommendations**.  
 
