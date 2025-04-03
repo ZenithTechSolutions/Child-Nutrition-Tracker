@@ -10,6 +10,7 @@
     background: linear-gradient(to right, #ffbd45, #ff4e6d);
     color: white;
     position: sticky;
+    z-index: 100;
     top: 0px;
 }
 
