@@ -103,16 +103,4 @@ form input[type="tel"] {
   font-size: 0.8rem;
   border-radius: 10px;
 } 
-/* form textarea[type="text"] {
-  width: 400px;
-  height: 140px;
-  border: 2px solid #808080;
-  font-size: 0.8rem;
-  border-radius: 10px;
-}
-form button {
-  width: 150px;
-  height: 40px;
-  border: 1px solid #808080;
-  border-radius: 10px;
-}
+
