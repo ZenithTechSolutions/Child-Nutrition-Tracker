@@ -1,9 +1,3 @@
-:root {
-  --button-color: #ffa500;
-  --hoverbutton-color: #ffa273;
-  --home-heading-color: #a52a2a;
-}
-
 .home-container {
   display: flex;
   flex-direction: column;
