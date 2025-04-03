@@ -209,9 +209,15 @@ padding: 0px;
   display: flex;
   flex-direction: row;
   height: 40px;
-  border: 1px solid black;
   align-items: center;
   width: 70%;
   justify-content: space-between;
 padding: 0px 20px;
+border-radius: 10px;
+}
+.bene-detail:nth-child(odd){
+  background-color: #00000010;
+}
+.bene-detail:nth-child(even){
+  background-color: #c8c7c7;
 }
