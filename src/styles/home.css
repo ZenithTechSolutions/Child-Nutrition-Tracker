@@ -1,71 +1,67 @@
-:root{
-    --button-color:#FFA500;
-    --home-heading-color:#A52A2A;
+:root {
+  --button-color: #ffa500;
+  --home-heading-color: #a52a2a;
 }
 
-.home-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    padding-top: 10px;
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
 
 }
-.home-container p{
-    color: var(--home-heading-color);
-    font-size: 48px;
-    font-weight: 500;
+.home-container p {
+  color: var(--home-heading-color);
+  font-size: 48px;
+  font-weight: 500;
 }
-.home-container span{
-    color: var(--home-heading-color);
-    font-weight: 700;
+.home-container span {
+  color: var(--home-heading-color);
+  font-weight: 700;
 }
-.home-main{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    max-width: 1275px;
-    gap: 50px 130px;
-}
-
-.home-card{
-    display: flex;
-    flex-wrap: wrap;
-    width: 260px;
-    height: 327px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    border-radius: 20px;
-    box-shadow: 2px 2px 2px 4px #00000014;
-    background: white;
-    padding: 20px;
+.home-main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 800px;
+  gap: 50px 80px;
 }
 
-.home-card img{
-    width: 176px;
-    height: 176px;
-    object-fit: cover;
+.home-card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+  height: 240px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px 4px #00000014;
+  background: white;
+  padding: 20px;
 }
 
-.home-card-btn{
-    width: 152px;
-    height: 48px;
-    border-radius: 25px;
-    color: var(--white);
-    font-weight: 500;
-    font-size: 1rem;
-    background-color: var(--button-color);
-    border: none;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
+.home-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
 }
 
-.home-card-btn:hover{
-    background-color: var(--white);
-    color: var(--button-color);
-    border: black;
+.home-card-btn {
+  width: 120px;
+  height: 42px;
+  border-radius: 25px;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 0.9rem;
+  background-color: var(--button-color);
+  border: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }

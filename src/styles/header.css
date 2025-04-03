@@ -9,6 +9,7 @@
     justify-content: space-between;
     background: linear-gradient(to right, #ffbd45, #ff4e6d);
     color: white;
+    position: sticky;
 }
 
 .header-profile{
