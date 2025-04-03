@@ -1,0 +1,23 @@
+.bene-container{
+    margin: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
+    height: 100vh;
+    background-color: #fff;
+}
+.bene-add-student{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.bene-add-student p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid black;
+    height: 20px;
+    text-align: center;
+    width: 20px;
+}
