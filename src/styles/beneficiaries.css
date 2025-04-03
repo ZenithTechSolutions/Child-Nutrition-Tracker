@@ -58,7 +58,6 @@
   color: white;
 }
 
-/* --- Form Styling --- */
 .bene-stu-details {
   position: absolute;
   top: 110%;
@@ -72,6 +71,23 @@
   flex-direction: column;
   gap: 15px;
   transition: all 0.3s ease-in-out;
+  
+  max-height: 400px;  
+  overflow-y: auto;
+}
+
+.bene-stu-details::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bene-stu-details::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+.bene-stu-details::-webkit-scrollbar-thumb {
+  background: #ff4400;
+  border-radius: 10px;
 }
 
 .bene-stu-details form {
@@ -120,9 +136,8 @@
 }
 
 .bene-stu-details form button {
-  width: 100%;
-  height: 50px;
-  background-color: #007bff;
+  width: 100px;
+  height: 40px;
   color: white;
   font-size: 1.2rem;
   font-weight: 600;
@@ -131,9 +146,10 @@
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
-
-.bene-stu-details form button:hover {
-  background-color: #0056b3;
+.bene-stu-details-btn{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .bene-count {
@@ -148,4 +164,14 @@
   font-weight: bold;
   border-radius: 15px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submit{
+  background-color: var(--button-color);
+}
+.submit:hover{
+  background-color: var(--button-color);
+}
+.cancel{
+  background-color: red;
 }

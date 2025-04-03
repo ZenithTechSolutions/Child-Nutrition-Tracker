@@ -72,7 +72,10 @@ const Beneficiaries = () => {
                     placeholder="Enter Your Number"
                     required
                   />
-                  <button type="submit">Submit</button>
+                 <div className="bene-stu-details-btn">
+                 <button className="submit" >Submit</button>
+                 <button className="cancel">Cancel</button>
+                 </div>
                 </form>
               </div>
             </div>
