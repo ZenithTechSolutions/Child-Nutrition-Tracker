@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../styles/beneficiaries.css";
-import Header from "./header";
 const Beneficiaries = () => {
   const [add, setAdd] = useState(false); //Open Add Students Menu
   //To Store User Data
@@ -151,7 +150,7 @@ const Beneficiaries = () => {
               </div>
             </div>
             <div className="bene-count">
-              <h6>Total Children Count : {data.length}</h6>
+              <h6>Total Children Count : {record.length}</h6>
             </div>
             <div className="bene-list">
               {record.map((item,index)=>(
