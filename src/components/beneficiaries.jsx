@@ -27,38 +27,38 @@ const Beneficiaries = () => {
                     required
                   />
                   <div className="dates">
-                   <div className="date-birth">
-                   <label htmlFor="dob">Date of Birth:</label>
-                   <input type="date" name="dob" required />
-                   </div>
+                    <div className="date-birth">
+                      <label htmlFor="dob">Date of Birth:</label>
+                      <input type="date" name="dob" required />
+                    </div>
                     <div className="date-join">
-                    <label htmlFor="doj">Date of Join:</label>
-                    <input type="date" name="doj" required />
+                      <label htmlFor="doj">Date of Join:</label>
+                      <input type="date" name="doj" required />
                     </div>
                   </div>
-            <div className="numbers">
-            <label htmlFor="age">Age:</label>
-                  <input
-                    type="number"
-                    name="age"
-                    placeholder="Enter Age"
-                    required
-                  />
-                  <label htmlFor="height">Height:</label>
-                  <input
-                    type="number"
-                    name="height"
-                    placeholder="Enter Height"
-                    required
-                  />
-                  <label htmlFor="weight">Weight:</label>
-                  <input
-                    type="number"
-                    name="weight"
-                    placeholder="Enter Weight"
-                    required
-                  />
-            </div>
+                  <div className="numbers">
+                    <label htmlFor="age">Age:</label>
+                    <input
+                      type="number"
+                      name="age"
+                      placeholder="Enter Age"
+                      required
+                    />
+                    <label htmlFor="height">Height:</label>
+                    <input
+                      type="number"
+                      name="height"
+                      placeholder="Enter Height"
+                      required
+                    />
+                    <label htmlFor="weight">Weight:</label>
+                    <input
+                      type="number"
+                      name="weight"
+                      placeholder="Enter Weight"
+                      required
+                    />
+                  </div>
                   <label htmlFor="address">Address:</label>
                   <textarea
                     type="text"

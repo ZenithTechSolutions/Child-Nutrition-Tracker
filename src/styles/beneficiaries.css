@@ -54,65 +54,65 @@
   font-size: 2rem;
   border-radius: 15px;
 }
-.bene-stu-details{
-    position: absolute;
-    top: 0%;
-    transform: translateY(-50);
-    width: 800px;
-    height: 600px;
-background-color: #fff;
-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
-border-radius: 15px;
-padding: 30px;
-display: flex; 
-justify-content: center;
+.bene-stu-details {
+  position: absolute;
+  top: 0%;
+  transform: translateY(-50);
+  width: 500px;
+  height: 600px;
+  background-color: #fff;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
 }
-.dates{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-
-form label{
-    font-size: 1rem;
-    color: black;
-}
-.numbers{
-    display: flex;
-    flex-direction: row;
+.dates {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
-form input[type="text"]{
-width: 400px;
-height: 40px;
-border: 2px solid #808080;
-font-size: 1rem;
-border-radius: 10px;
+form label {
+  font-size: 1rem;
+  color: black;
 }
-form input[type="number"]{
-width: 120px;
-height: 40px;
-border: 2px solid #808080;
-font-size: 0.8rem;
-border-radius: 10px;
+.numbers {
+  display: flex;
+  flex-direction: row;
 }
-form input[type="tel"]{
-width: 400px;
-height: 40px;
-border: 2px solid #808080;
-font-size: 0.8rem;
-border-radius: 10px;
+
+form input[type="text"] {
+  width: 300px;
+  height: 40px;
+  border: 2px solid #808080;
+  font-size: 1rem;
+  border-radius: 10px;
 }
-form textarea[type="text"]{
-width: 400px;
-height: 140px;
-border: 2px solid #808080;
-font-size: 0.8rem;
-border-radius: 10px;
+form input[type="number"] {
+  width: 80px;
+  height: 40px;
+  border: 2px solid #808080;
+  font-size: 0.8rem;
+  border-radius: 10px;
 }
-form button{
-    width: 150px;
-    height: 40px;
-    border: 1px solid #808080;
-    border-radius: 10px;
+form input[type="tel"] {
+  width: 300px;
+  height: 40px;
+  border: 2px solid #808080;
+  font-size: 0.8rem;
+  border-radius: 10px;
+} */
+/* form textarea[type="text"] {
+  width: 400px;
+  height: 140px;
+  border: 2px solid #808080;
+  font-size: 0.8rem;
+  border-radius: 10px;
+}
+form button {
+  width: 150px;
+  height: 40px;
+  border: 1px solid #808080;
+  border-radius: 10px;
 }
