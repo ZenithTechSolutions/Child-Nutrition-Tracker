@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../styles/beneficiaries.css";
 const Beneficiaries = () => {
   const [add, setAdd] = useState(false); //Open Add Students Menu
@@ -10,6 +10,8 @@ const Beneficiaries = () => {
     age: "",
     height: "",
     weight: "",
+    father: "",
+    mother: "",
     address: "",
     contact: "",
   });
@@ -43,6 +45,8 @@ const Beneficiaries = () => {
       age: "",
       height: "",
       weight: "",
+      father: "",
+      mother: "",
       address: "",
       contact: "",
     }); // Reset form
@@ -126,6 +130,24 @@ const Beneficiaries = () => {
                       required
                     />
                   </div>
+                  <label htmlFor="father">Father's Name:</label>
+                  <input
+                    type="text"
+                    name="father"
+                    value={data.father}
+                    placeholder="Enter Your Father's Name"
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <label htmlFor="mother">Mother's Name:</label>
+                  <input
+                    type="text"
+                    name="mother"
+                    value={data.mother}
+                    placeholder="Enter Your Mother's Name"
+                    onChange={handleInputChange}
+                    required
+                  />
                   <label htmlFor="address">Address:</label>
                   <textarea
                     type="text"
