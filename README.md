@@ -1,6 +1,6 @@
 # Child Nutrition Tracker
 
-Welcome to the official repository of **Poshan-Tracker**, a cutting-edge platform dedicated to monitoring and enhancing **nutrition tracking, dietary analysis, and health recommendations**.  
+Welcome to the official repository of **Child-Nutrition-Tracker**, a cutting-edge platform dedicated to monitoring and enhancing **nutrition tracking, dietary analysis, and health recommendations**.  
 
 This project aims to provide an intelligent system for individuals, healthcare professionals, and organizations to track and improve nutritional intake efficiently.  
 
@@ -24,7 +24,7 @@ This project aims to provide an intelligent system for individuals, healthcare p
 
 ## About  
 
-**Poshan-Tracker** is designed to empower users with real-time nutrition insights, helping them maintain a balanced and healthy diet.  
+**Child-Nutrition-Tracker** is designed to empower users with real-time nutrition insights, helping them maintain a balanced and healthy diet.  
 
 ### The project includes:  
 
@@ -70,12 +70,12 @@ To run the project locally, follow these steps:
 
 #### Clone the Repository  
 ```sh
-git clone https://github.com/Pradeep5377/Poshan-Tracker
+git clone https://github.com/Pradeep5377/Child-Nutrition-Tracker
 ```
 
 #### Navigate to the Project Directory  
 ```sh
-cd Poshan-tracker
+cd Child-Nutrition-Tracker
 ```
 
 #### Install Dependencies  
@@ -113,7 +113,7 @@ This project is developed and maintained by **Team Zenith**:
 ## Live Preview  
 
 The Website is live and accessible here:
-[Poshan-Tracker Website](https://poshan-tracker.vercel.app/)
+[Child-Nutrition-Tracker Website](https://child-nutrition-tracker.vercel.app/)
 
 ## License
 
