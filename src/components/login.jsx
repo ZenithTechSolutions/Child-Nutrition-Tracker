@@ -52,7 +52,7 @@ const Login = ({setLogin,setText}) => {
               <button onClick={handleInput}>Login</button>
             </Link>
           </div>
-          <p>Don't Have An Account? <a href="#">Register</a> </p>
+          <p>Don't Have An Account? <Link to='/register'>Register</Link> </p>
         </div>
       </div>
     </div>
