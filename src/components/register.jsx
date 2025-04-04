@@ -34,7 +34,7 @@ const Register = () => {
     };
 
     const handleStateSelect = (selectedState) => {
-        setRegisterData(() => ({
+        setRegisterData((registerData) => ({
             ...registerData,
             state: selectedState,
             district: '',
@@ -43,7 +43,7 @@ const Register = () => {
     };
 
     const handleDistrictSelect = (selectedDistrict) => {
-        setRegisterData(() => ({
+        setRegisterData((registerData) => ({
             ...registerData,
             district: selectedDistrict,
             taluk: ''
@@ -107,7 +107,7 @@ const Register = () => {
                     ))}
                 </select>
 
-                <label htmlFor="buttoon">Register Here</label>
+                <label htmlFor="button">Register Here</label>
                 <button type="submit">Register</button>
             </form>
         </div>
