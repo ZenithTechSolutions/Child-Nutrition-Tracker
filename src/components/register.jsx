@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const register = () => {
+const Register = () => {
     const [registerData, setRegisterData] = useState({
         name: '',
         number: '',
@@ -114,4 +114,4 @@ const register = () => {
     )
 }
 
-export default register
+export default Register
