@@ -1,57 +1,44 @@
 .bene-container {
   display: flex;
-  align-items: center;
   justify-content: center;
   margin: 40px auto;
   border-radius: 12px;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   max-width: 900px;
   padding: 20px;
   height: 550px;
-}
-
-.bene-content {
-  padding: 30px;
-  min-height: 90vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 25px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .bene-add-student {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   max-width: 650px;
   background-color: #f8f9fa;
-  margin-top: 25px;
+  gap: 20px;
   padding: 15px 25px;
   border-radius: 15px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-  position: relative;
 }
 
 .bene-add-student h2 {
-  font-size: 2rem;
-  color: #333;
-  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .bene-add-student span {
   font-size: 2rem;
+  border: 3px solid black;
+  height: 50px;
+  width: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 3px solid black;
-  height: 50px;
-  width: 50px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: 0.3s;
 }
 
 .bene-add-student span:hover {
@@ -59,165 +46,173 @@
   color: white;
 }
 
-.bene-stu-details {
-  border: 1px solid black;
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  max-height: 500px;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 650px;
-  background-color: #fff;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  transition: all 0.3s ease-in-out;
+.bene-count {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.bene-list {
+  margin-top: 15px;
+  max-height: 300px;
   overflow-y: auto;
-}
-.bene-stu-details-hidden {
-  display: none;
-
+  padding: 10px;
+  border-radius: 10px;
 }
 
-.bene-stu-details::-webkit-scrollbar {
+.bene-list::-webkit-scrollbar {
   width: 8px;
 }
 
-.bene-stu-details::-webkit-scrollbar-track {
+.bene-list::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.bene-list::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.bene-detail {
+  display: flex;
+  justify-content: space-between;
+  background: #f0f0f0;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.bene-detail:hover {
   background: #e0e0e0;
-  border-radius: 10px;
 }
 
-.bene-stu-details::-webkit-scrollbar-thumb {
-  background: #ff4400;
-  border-radius: 10px;
+/* Background Blur Effect */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
 }
 
-.bene-stu-details form {
+.overlay-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Pop-up Animation */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 500px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.popup-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Popup Form */
+.popup-content h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.popup form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
-.bene-stu-details form label {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #333;
+.popup form label {
+  font-weight: bold;
+  margin-top: 10px;
 }
 
-.bene-stu-details form input,
-.bene-stu-details form textarea {
+.popup form input,
+.popup form textarea {
   width: 100%;
-  height: 45px;
-  border: 2px solid #808080;
-  border-radius: 8px;
   padding: 10px;
-  font-size: 1rem;
-  transition: 0.3s ease-in-out;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
-.bene-stu-details form input:focus,
-.bene-stu-details form textarea:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-.bene-stu-details form textarea {
-  height: 100px;
+.popup form textarea {
+  height: 80px;
   resize: none;
 }
 
-.dates,
-.numbers {
+.popup-buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.numbers input {
-  width: calc(33.3% - 15px);
-}
-
-.bene-stu-details-btn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-.bene-stu-details-btn input[type="submit"]{
-  width: 100px;
-  height: 40px;
-  color: white;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-padding: 0px;
-}
-.bene-stu-details-btn input[type="button"]{
-  width: 100px;
-  height: 40px;
-  color: white;
-  font-size: 1rem;
-  letter-spacing: 1px;
-  font-weight: 600;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-padding: 0px;
-}
-
-
-.bene-count {
-  width: 100%;
-  max-width: 350px;
-  height: 70px;
-  background-color: #c0eaff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border-radius: 15px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.submit{
-  background-color: #ff8300;
-  color: white;
-}
-
-.cancel{
-  background-color: #723535;
-}
-
-.bene-list{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-.bene-detail{
-  display: flex;
-  flex-direction: row;
-  height: 40px;
-  align-items: center;
-  width: 70%;
   justify-content: space-between;
-padding: 0px 20px;
-border-radius: 10px;
+  margin-top: 15px;
 }
-.bene-detail:nth-child(odd){
-  background-color: #00000010;
+
+  .submit-btn {
+  background: #ff8300;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
 }
-.bene-detail:nth-child(even){
-  background-color: #c8c7c7;
+
+.submit-btn:hover {
+  background: #e67300;
+}
+
+.cancel-btn {
+  background: #723535;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.cancel-btn:hover {
+  background: #5b2b2b;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .popup {
+    width: 90%;
+  }
+
+  .bene-container {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .bene-add-student {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bene-add-student span {
+    margin-top: 10px;
+  }
 }
