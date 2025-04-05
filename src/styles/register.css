@@ -1,0 +1,62 @@
+.Register-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.Register-left-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Register-right-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 6vh;
+    background-color: #c9dcfc94;
+    padding: 30px;
+    border-radius: 15px;
+    gap: 10px;
+}
+
+.Register-right-container form input,
+select,
+button {
+    border: none;
+    padding: 6px;
+    border-radius: 7px;
+}
+
+.Register-right-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: auto;
+}
+
+.Register-right-container form button {
+    background-color: #0047f9;
+    margin: 5px auto;
+    padding: 5px 15px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.Register-right-container form button:hover {
+    background-color: #07329c;
+    transform: scale(1.1);
+}
+
+.Register-right-container form a {
+    color: #0047f9;
+}
+
+.Register-right-container form label {
+    text-align: left;
+}
