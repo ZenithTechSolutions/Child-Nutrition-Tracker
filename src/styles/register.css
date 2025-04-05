@@ -1,29 +1,44 @@
-.registerContainer {
+.Register-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.Register-left-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Register-right-container {
     display: flex;
     flex-direction: column;
-    margin: 6vh auto;
-    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    margin: 6vh;
     background-color: #c9dcfc94;
     padding: 30px;
     border-radius: 15px;
     gap: 10px;
 }
 
-.registerContainer form input,
+.Register-right-container form input,
 select,
 button {
     border: none;
-    padding: 5px;
+    padding: 6px;
     border-radius: 7px;
 }
 
-.registerContainer form {
+.Register-right-container form {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    margin: auto;
 }
 
-.registerContainer form button {
+.Register-right-container form button {
     background-color: #0047f9;
     margin: 5px auto;
     padding: 5px 15px;
@@ -33,11 +48,15 @@ button {
     transition: transform 0.2s ease;
 }
 
-.registerContainer form button:hover {
+.Register-right-container form button:hover {
     background-color: #07329c;
     transform: scale(1.1);
 }
 
-.registerContainer form a {
+.Register-right-container form a {
     color: #0047f9;
+}
+
+.Register-right-container form label {
+    text-align: left;
 }
