@@ -87,7 +87,7 @@ const Beneficiaries = () => {
       {/* Animated Pop-up */}
       <div className={`popup ${add ? "popup-active" : ""}`}>
         <div className="popup-content">
-          <h2>Add Student</h2>
+          <h2>Student Details</h2>
           <form onSubmit={handleSubmit}>
             <label>Name:</label>
             <input 
