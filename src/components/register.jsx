@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { Link } from 'react-router-dom'
+import '../styles/register.css'
 
 const Register = () => {
     const [registerData, setRegisterData] = useState({
@@ -11,10 +13,10 @@ const Register = () => {
     })
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { id, value } = e.target;
         setRegisterData((registerData) => ({
             ...registerData,
-            [name]: value
+            [id]: value
         }))
     }
 
@@ -73,18 +75,18 @@ const Register = () => {
     return (
         <div className="registerContainer">
             <h1>Create an account</h1>
-            <form autoComplete="on" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name:</label>
-                <input type="text" name="name" placeholder="Enter your name" value={registerData.name} onChange={handleChange} required />
+                <input type="text" id="name" placeholder="Enter your name" value={registerData.name} onChange={handleChange} required />
 
                 <label htmlFor="number">Phone Number:</label>
-                <input type="number" name="number" placeholder="Enter your number" value={registerData.number} onChange={handleChange} required />
+                <input type="tel" id="number" placeholder="Enter your number" value={registerData.number} onChange={handleChange} pattern="[0-9]{10}" title="Phone number must be exactly 10 digits" required />
 
                 <label htmlFor="password">Password:</label>
-                <input type="password" name="password" placeholder="Enter your password" value={registerData.password} onChange={handleChange} required />
+                <input type="password" id="password" placeholder="Enter your password" value={registerData.password} onChange={handleChange} required />
 
                 <label htmlFor="state">State:</label>
-                <select name="state" value={registerData.state} onChange={(e) => handleStateSelect(e.target.value)} required>
+                <select id="state" value={registerData.state} onChange={(e) => handleStateSelect(e.target.value)} required>
                     <option >Select State</option>
                     {Object.keys(districtData).map((st) => (
                         <option key={st} value={st}>{st}</option>
@@ -92,7 +94,7 @@ const Register = () => {
                 </select>
 
                 <label htmlFor="district">District:</label>
-                <select name="district" value={registerData.district} onChange={(e) => handleDistrictSelect(e.target.value)} required>
+                <select id="district" value={registerData.district} onChange={(e) => handleDistrictSelect(e.target.value)} required>
                     <option >Select District</option>
                     {registerData.state && districtData[registerData.state]?.map((dis) => (
                         <option key={dis} value={dis}>{dis}</option>
@@ -100,15 +102,16 @@ const Register = () => {
                 </select>
 
                 <label htmlFor="taluk">Select Taluk:</label>
-                <select name="taluk" value={registerData.taluk} onChange={handleChange} required>
+                <select id="taluk" value={registerData.taluk} onChange={handleChange} required>
                     <option>Select Taluk</option>
                     {registerData.district && talukData[registerData.district]?.map((tal) => (
                         <option key={tal} value={tal}>{tal}</option>
                     ))}
                 </select>
-
-                <label htmlFor="button">Register Here</label>
+                
                 <button type="submit">Register</button>
+
+                <p>Already have a Account?<Link to='/login'> Login Here</Link></p>
             </form>
         </div>
     )

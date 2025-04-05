@@ -30,7 +30,7 @@ const Login = ({setLogin,setText}) => {
           <div className="form-container">
             <div className="input-box">
               <FaPhone className="icon" />
-              <form>
+              <form className="loginForm" >
                 <label>Mobile Number</label>
                 <input type="tel" placeholder="+91 XXXXXXXXXX" value={input} onChange={(e)=>setInput(e.target.value)} />
               </form>
@@ -38,7 +38,7 @@ const Login = ({setLogin,setText}) => {
 
             <div className="input-box">
               <MdPassword className="icon" />
-              <form>
+              <form className="loginForm">
                 <label>
                   MPIN<span className="required">*</span>
                 </label>

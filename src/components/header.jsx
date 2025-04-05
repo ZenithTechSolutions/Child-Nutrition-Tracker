@@ -11,7 +11,7 @@ const Header = ({ login, text }) => {
                 <p id="header-title">Micro, Small and Medium Enterprises</p>
                 <div className="header-profile">
                     <p><Link to="/">Home</Link></p>
-                    <p><Link to="/login">{login ? text : "Login/Register"} </Link></p>
+                    <p><Link to="/login">{login ? text : "Login"} </Link></p>
                     <FontAwesomeIcon icon={faCircleUser} style={{ color: "#fff", fontSize: "30px" }} />
                 </div>
             </header>
