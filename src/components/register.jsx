@@ -55,8 +55,8 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        try { 
-            const newData = await fetch("https://child-nutrition-tracker-backend.onrender.com", {
+        try { //https://child-nutrition-tracker-backend.onrender.com
+            const newData = await fetch("http://localhost:5000", {
                 method: "POST",
                 headers: {
                     "content-Type": 'application/json'
@@ -88,7 +88,7 @@ const Register = () => {
                     <input type="tel" id="number" placeholder="Enter your number" value={registerData.number} onChange={handleChange} pattern="[0-9]{10}" title="Phone number must be exactly 10 digits" required />
 
                     <label htmlFor="password">Password:</label>
-                    <input type="text" id="password" placeholder="Enter your password" value={registerData.password} onChange={handleChange} pattern="\d{4}" minLength={4} maxLength={4} inputMode="numeric" title='Enter excatly 4 digits' required />
+                    <input type="text" id="password" placeholder="Enter 4-digit pin" value={registerData.password} onChange={handleChange} pattern="\d{4}" minLength={4} maxLength={4} inputMode="numeric" title='Enter excatly 4 digits' required />
 
                     <label htmlFor="state">State:</label>
                     <select id="state" value={registerData.state} onChange={(e) => handleStateSelect(e.target.value)} required>
