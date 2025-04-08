@@ -55,8 +55,8 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        try { //https://child-nutrition-tracker-backend.onrender.com
-            const newData = await fetch("http://localhost:5000", {
+        try { 
+            const newData = await fetch("https://child-nutrition-tracker-backend.onrender.com", {
                 method: "POST",
                 headers: {
                     "content-Type": 'application/json'
