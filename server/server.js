@@ -22,6 +22,14 @@ mongoose.connect(process.env.MONGO_URL)
         console.log('DB not connected ', err)
     })
 
+app.use("/", (req,res) => {
+    if (mongoose.connection.readyState === 1) {
+        res.send(`<h1>Server is Running</h1> <h1 style="color:green">Database connnected successfully!!</h1>`)
+    } else {
+        res.send(`<h1>Server is Running</h1> <h1 style="color:red;">Database not connnected! Check connection string</h1>`)
+    }
+})
+
 const registerRoute = require('./router/registerRouter')
 app.use('/', registerRoute)
 
