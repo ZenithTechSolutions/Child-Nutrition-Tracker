@@ -10,7 +10,7 @@ require('dotenv').config()
 
 //Port assign
 app.listen(process.env.PORT, () => {
-    console.log("Server started")
+    console.log("Server started at port",process.env.PORT)
 })
 
 //MongoDB connection string
