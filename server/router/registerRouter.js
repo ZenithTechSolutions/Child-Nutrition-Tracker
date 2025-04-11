@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const registerModel = require('../schema_model/registerModel.js')
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
         const { name, number, password, state, district, taluk } = req.body;
         const user = await registerModel.findOne({ number })
