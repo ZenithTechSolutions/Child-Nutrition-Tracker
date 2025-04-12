@@ -15,7 +15,7 @@ router.post('/login', async (requestAnimationFrame, res) => {
         res.status(200).json({ Message: 'Login successful' })
     }
     catch (err) {
-        res.status(500).json({ Message: 'Server error', error: err.message })
+        res.status(500).json({ Message: 'Server error' })
     }
 })
 
