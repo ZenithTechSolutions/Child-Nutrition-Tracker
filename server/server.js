@@ -4,7 +4,11 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 //Middleware
-app.use(cors())
+app.use(cors(
+    original = 'http://localhost:5000',
+    credentials = true,
+    optionsSuccessStatus = 200,
+))
 app.use(express.json())
 require('dotenv').config()
 
@@ -12,6 +16,7 @@ require('dotenv').config()
 app.listen(process.env.PORT, () => {
     console.log("Server started at port",process.env.PORT)
 })
+
 
 //MongoDB connection string
 mongoose.connect(process.env.MONGO_URL)
@@ -34,4 +39,4 @@ const registerRoute = require('./router/registerRouter')
 app.use('/api', registerRoute)
 
 const loginRoute = require('./router/loginRouter')
-app.use('/api',loginRoute)
+app.use('/api', loginRoute)  
