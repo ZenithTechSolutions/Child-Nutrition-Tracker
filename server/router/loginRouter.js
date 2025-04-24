@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const registerModel = require("../schema_model/registerModel");
 
-router.post('/login', async (req, res) => {
+
+export const login = async (req, res) => {
     const { number, password } = req.body;
     try {
         const user = await registerModel.findOne({ number });
@@ -27,6 +28,4 @@ router.post('/login', async (req, res) => {
     catch (err) {
         res.status(500).json({ message: 'Server error', err: err.message })
     }
-})
-
-module.exports = router
+  };
