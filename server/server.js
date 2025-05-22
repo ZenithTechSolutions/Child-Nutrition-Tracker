@@ -2,21 +2,22 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 //Middleware
-app.use(cors(
-    original = 'http://localhost:5000',
-    credentials = true,
-    optionsSuccessStatus = 200,
-))
+app.use(cors({
+    original : process.CLIENT_UR,
+    credentials : true,
+    optionsSuccessStatus : 200
+}))
 app.use(express.json())
+app.use(cookieParser())
 require('dotenv').config()
 
 //Port assign
 app.listen(process.env.PORT, () => {
     console.log("Server started at port",process.env.PORT)
 })
-
 
 //MongoDB connection string
 mongoose.connect(process.env.MONGO_URL)
