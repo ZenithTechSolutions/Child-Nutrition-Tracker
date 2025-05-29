@@ -41,7 +41,9 @@ This project aims to provide an intelligent system for individuals, healthcare p
 - **Integration with Health Devices** – Sync with wearables for accurate tracking.  
 - **Community & Support** – Connect with nutritionists and health experts.  
 
-For more details, visit our official **[Project Website](https://child-nutrition-tracker-flax.vercel.app/)**  
+For more details, visit our official
+
+[![Conference Website](https://img.shields.io/badge/Project%20Website-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://child-nutrition-tracker-flax.vercel.app/)
 
 ## Key Features  
 
@@ -100,13 +102,19 @@ http://localhost:5173
 
 ## Team & Contributors  
 
-This project is developed and maintained by [Zenith Tech Solutions](https://zenith-portfolio-orpin.vercel.app/):  
+This project is developed and maintained by
 
-**[Pradeep](https://github.com/Pradeep5377)** | **[Vishal Kannan](https://github.com/VISHALKANNAN070)** | **[Vignesh](https://github.com/vickyy234)** | **[Giri Prasath](https://github.com/Giriprasath1726)** | **[Sadhur](https://github.com/Sadhurnithy)**   
+[![ZenithTechSolutions](https://img.shields.io/badge/ZenithTechSolutions-0A192F?style=for-the-badge&logo=github&logoColor=white)](https://zenith-portfolio-orpin.vercel.app/)
+
+###### Contributors
+
+[![Vignesh](https://img.shields.io/badge/-Vignesh-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vickyy234) [![Sadhur](https://img.shields.io/badge/-Sadhur-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Sadhurnithy) [![Pradeep](https://img.shields.io/badge/-Pradeep-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Pradeep5377) [![Giri Prasath](https://img.shields.io/badge/-GiriPrasath-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Giriprasath1726) [![Vishal Kannan](https://img.shields.io/badge/-VishalKannan-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VISHALKANNAN070)   
 
 ## Live Preview  
 
-The Website is live and accessible [here](https://child-nutrition-tracker-flax.vercel.app/)
+The website is live and accessible below
+
+[![Click Here](https://img.shields.io/badge/Click%20Here-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://child-nutrition-tracker-flax.vercel.app/)
 
 ## License
 
