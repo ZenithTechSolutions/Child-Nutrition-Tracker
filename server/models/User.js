@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose';
 
 const userSchema = new Schema({
     name: String,
@@ -9,6 +9,6 @@ const userSchema = new Schema({
     taluk: String,
     students: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
     bills: [{ type: Schema.Types.ObjectId, ref: 'Bill' }]
-})
+});
 
-export default model('User', userSchema)
+export default model('User', userSchema);
