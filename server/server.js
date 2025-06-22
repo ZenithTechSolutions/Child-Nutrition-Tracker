@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser')
 
 //Middleware
 app.use(cors({
-    original: process.CLIENT_UR,
+    original: process.CLIENT_URL,
     credentials: true,
     optionsSuccessStatus: 200
 }))
