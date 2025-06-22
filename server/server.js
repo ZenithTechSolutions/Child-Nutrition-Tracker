@@ -1,8 +1,8 @@
-const express = require('express')
+import express, { json } from 'express'
 const app = express()
-const mongoose = require('mongoose')
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
+import { connect, connection } from 'mongoose'
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 //Middleware
 app.use(cors({
@@ -10,7 +10,7 @@ app.use(cors({
     credentials: true,
     optionsSuccessStatus: 200
 }))
-app.use(express.json())
+app.use(json())
 app.use(cookieParser())
 require('dotenv').config()
 
@@ -20,7 +20,7 @@ app.listen(process.env.PORT, () => {
 })
 
 //MongoDB connection string
-mongoose.connect(process.env.MONGO_URL)
+connect(process.env.MONGO_URL)
 .then(() => {
     console.log('DB connected!')
 })
@@ -30,15 +30,15 @@ mongoose.connect(process.env.MONGO_URL)
 
 //Check route
 app.get("/", (req, res) => {
-    if (mongoose.connection.readyState === 1) {
+    if (connection.readyState === 1) {
         res.send(`<h1>Server is Started and Running</h1> <h1 style="color:green">Database connnected successfully!!</h1>`)
     } else {
         res.send(`<h1>Server is Running</h1> <h1 style="color:red;">Database not connnected! Check connection string</h1>`)
     }
 })
 
-const userRoute = require('./routes/User').default
-const studentRoute = require('./routes/Student')
+import userRoute from './routes/User'
+import studentRoute from './routes/Student'
 
 app.use('/api/auth', userRoute)
 app.use('/api/student', studentRoute)
