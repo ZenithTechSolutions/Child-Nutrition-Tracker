@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
     }
 })
 
-const userRoute = require('./routes/User')
+const userRoute = require('./routes/User').default
 const studentRoute = require('./routes/Student')
 
 app.use('/api/auth', userRoute)

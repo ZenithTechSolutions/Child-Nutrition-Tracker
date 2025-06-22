@@ -1,19 +1,20 @@
-const express = require('express')
-const router = express.Router()
-const Student = require('../models/Student')
-const authMiddleware = require('../middleware/auth')
+import express from 'express';
+import Student from '../models/Student.js';
+import authMiddleware from '../middleware/auth.js';
 
-//Get all students
+const router = express.Router();
+
+// Get all students
 router.get('/all', authMiddleware, async (req, res) => {
     try {
-        const students = await find({ user: req.user.userId });
+        const students = await Student.find({ user: req.user.userId });
         res.status(200).json(students);
     } catch {
         res.status(500).json({ message: 'Error fetching students' });
     }
-})
+});
 
-//Add new student
+// Add new student
 router.post('/add-student', authMiddleware, async (req, res) => {
     const { name, dob, doj, age, height, weight, fathers_name, mothers_name, address, contact } = req.body;
     try {
@@ -27,34 +28,34 @@ router.post('/add-student', authMiddleware, async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: 'Error adding student' });
     }
-})
+});
 
-//Mark attendance
+// Mark attendance
 router.post('/mark-attendance/:studentId', authMiddleware, async (req, res) => {
     const { studentId } = req.params;
     const { present } = req.body;
     try {
-        const student = await findById(studentId);
+        const student = await Student.findById(studentId);
         student.attendance.push({ present });
         await student.save();
         res.status(200).json({ message: 'Attendance marked' });
     } catch (err) {
         res.status(500).json({ message: 'Error marking attendance' });
     }
-})
+});
 
-//Update measurements
+// Update measurements
 router.post('/update-measurements/:studentId', authMiddleware, async (req, res) => {
     const { studentId } = req.params;
     const { weight, height } = req.body;
     try {
-        const student = await findById(studentId);
+        const student = await Student.findById(studentId);
         student.measurements.push({ weight, height });
         await student.save();
         res.status(200).json({ message: 'Measurements updated successfully' });
     } catch (err) {
         res.status(500).json({ message: 'Error updating measurements' });
     }
-})
+});
 
-export default router
+export default router;
