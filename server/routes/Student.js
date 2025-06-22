@@ -1,12 +1,12 @@
-const express = require('express')
-const router = express.Router()
-const Student = require('../models/Student')
-const authMiddleware = require('../middleware/auth')
+import { Router } from 'express'
+const router = Router()
+import Student, { find, findById } from '../models/Student'
+import authMiddleware from '../middleware/auth'
 
 //Get all students
 router.get('/all', auth, async (req, res) => {
     try {
-        const students = await Student.find({ user: req.user.userId });
+        const students = await find({ user: req.user.userId });
         res.status(200).json(students);
     } catch {
         res.status(500).json({ message: 'Error fetching students' });
@@ -34,7 +34,7 @@ router.post('/mark-attendance/:studentId', authMiddleware, async (req, res) => {
     const { studentId } = req.params;
     const { present } = req.body;
     try {
-        const student = await Student.findById(studentId);
+        const student = await findById(studentId);
         student.attendance.push({ present });
         await student.save();
         res.status(200).json({ message: 'Attendance marked' });
@@ -48,7 +48,7 @@ router.post('/update-measurements/:studentId', authMiddleware, async (req, res) 
     const { studentId } = req.params;
     const { weight, height } = req.body;
     try {
-        const student = await Student.findById(studentId);
+        const student = await findById(studentId);
         student.measurements.push({ weight, height });
         await student.save();
         res.status(200).json({ message: 'Measurements updated successfully' });
@@ -57,4 +57,4 @@ router.post('/update-measurements/:studentId', authMiddleware, async (req, res) 
     }
 })
 
-module.exports = router
+export default router
