@@ -19,7 +19,14 @@ router.post('/add-student', authMiddleware, async (req, res) => {
     const { name, dob, doj, age, height, weight, fathers_name, mothers_name, address, contact } = req.body;
     try {
         const student = new Student({
-            name, doj, dob, age, fathers_name, mothers_name, address, contact,
+            name,
+            doj,
+            dob,
+            age,
+            fathers_name,
+            mothers_name,
+            address,
+            contact,
             user: req.user.userId,
             measurements: [{ height, weight }]
         });
