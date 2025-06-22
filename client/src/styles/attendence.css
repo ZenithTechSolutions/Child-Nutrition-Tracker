@@ -1,0 +1,50 @@
+.attendance-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  color: #f0f0f0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.attendance-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.student-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.student-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  padding: 0.25rem 0;
+}
+
+.student-item input[type='checkbox'] {
+  transform: scale(1.2);
+  accent-color: #4caf50;
+}
+
+.submit-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}

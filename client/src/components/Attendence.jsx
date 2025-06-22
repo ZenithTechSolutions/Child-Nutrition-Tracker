@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import "../styles/attendence.css";
 
 const Attendance = () => {
   const [students, setStudents] = useState([]);
@@ -16,8 +17,6 @@ const Attendance = () => {
       });
       const data = await response.json();
       setStudents(data);
-
-      // Initialize checkbox states (all unchecked by default)
       const initialStatus = {};
       data.forEach((student) => {
         initialStatus[student._id] = false;
@@ -41,7 +40,6 @@ const Attendance = () => {
     try {
       for (const studentId of Object.keys(attendanceStatus)) {
         const present = attendanceStatus[studentId];
-
         await fetch(`http://localhost:5000/api/student/mark-attendance/${studentId}`, {
           method: 'POST',
           headers: {
@@ -59,15 +57,15 @@ const Attendance = () => {
   };
 
   return (
-    <div>
+    <div className="attendance-container">
       <h2>Mark Attendance</h2>
       {loading ? (
         <p>Loading students...</p>
       ) : (
-        <form onSubmit={(e) => e.preventDefault()}>
-          <ul>
+        <form className="attendance-form" onSubmit={(e) => e.preventDefault()}>
+          <ul className="student-list">
             {students.map((student) => (
-              <li key={student._id}>
+              <li key={student._id} className="student-item">
                 <label>
                   <input
                     type="checkbox"
@@ -79,7 +77,9 @@ const Attendance = () => {
               </li>
             ))}
           </ul>
-          <button onClick={submitAttendance}>Submit Attendance</button>
+          <button className="submit-btn" onClick={submitAttendance}>
+            Submit Attendance
+          </button>
         </form>
       )}
     </div>
