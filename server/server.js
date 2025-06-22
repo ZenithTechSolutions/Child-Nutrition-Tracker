@@ -1,5 +1,8 @@
 import express, { json } from 'express';
-import { connect, connection } from 'mongoose';
+import mongoose from 'mongoose';
+
+const { connect, connection } = mongoose;
+
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
