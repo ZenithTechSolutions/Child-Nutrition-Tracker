@@ -2,7 +2,7 @@ import { Router } from 'express'
 const router = Router()
 import { sign } from 'jsonwebtoken'
 import { compare, hash } from 'bcrypt'
-import registerModel from "../models/User"
+import registerModel from "../models/User.js"
 
 router.post('/login', async (req, res) => {
     const { number, password } = req.body;
