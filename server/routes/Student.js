@@ -1,7 +1,7 @@
-import { Router } from 'express'
-const router = Router()
-import Student, { find, findById } from '../models/Student'
-import authMiddleware from '../middleware/auth'
+const express = require('express')
+const router = express.Router()
+const Student = require('../models/Student')
+const authMiddleware = require('../middleware/auth')
 
 //Get all students
 router.get('/all', auth, async (req, res) => {

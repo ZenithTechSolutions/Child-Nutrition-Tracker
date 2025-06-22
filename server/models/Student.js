@@ -1,7 +1,7 @@
-import { Schema, model } from 'mongoose'
+const mongoose = require('mongoose')
 
-const studentSchema = new Schema({
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
+const studentSchema = new mongoose.Schema({
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     name: String,
     dob: Date,
     doj: Date,
@@ -25,4 +25,4 @@ const studentSchema = new Schema({
     ]
 })
 
-export default model('Student', studentSchema)
+module.exports = mongoose.model('Student', studentSchema)
