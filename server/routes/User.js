@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { sign } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
+const { sign } = jwt;
 import { compare, hash } from 'bcrypt';
 import registerModel from '../models/User.js'; // ✅ must include .js
 
