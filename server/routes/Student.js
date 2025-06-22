@@ -4,7 +4,7 @@ const Student = require('../models/Student')
 const authMiddleware = require('../middleware/authMiddleware')
 
 //Get all students
-router.get('/all', auth, async (req, res) => {
+router.get('/all', authMiddleware, async (req, res) => {
     try {
         const students = await Student.find({ user: req.user.userId });
         res.status(200).json(students);
