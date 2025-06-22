@@ -37,8 +37,8 @@ app.get("/", (req, res) => {
     }
 })
 
-import userRoute from './routes/User'
-import studentRoute from './routes/Student'
+import userRoute from './routes/User.js'
+import studentRoute from './routes/Student.js'
 
 app.use('/api/auth', userRoute)
 app.use('/api/student', studentRoute)
