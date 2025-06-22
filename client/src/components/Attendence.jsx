@@ -1,40 +1,89 @@
-import React,{useState} from 'react'
+import React, { useEffect, useState } from 'react';
 
-const Attendence = () => {
-  const [attendence,setAttendence] = useState([])
+const Attendance = () => {
+  const [students, setStudents] = useState([]);
+  const [attendanceStatus, setAttendanceStatus] = useState({});
+  const [loading, setLoading] = useState(true);
 
-  const fetchAttendence = async() =>{
-    try{
-await fetch(`http://localhost:5000/api/mark-attendance/${studentId}`, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({ present: true }) // or false
-});
-      const data =await response.json()
-      setAttendence(data)
+  useEffect(() => {
+    fetchStudents();
+  }, []);
+
+  const fetchStudents = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/student/all', {
+        credentials: 'include',
+      });
+      const data = await response.json();
+      setStudents(data);
+
+      // Initialize checkbox states (all unchecked by default)
+      const initialStatus = {};
+      data.forEach((student) => {
+        initialStatus[student._id] = false;
+      });
+      setAttendanceStatus(initialStatus);
+    } catch (err) {
+      console.error('Failed to load students:', err);
+    } finally {
+      setLoading(false);
     }
-    catch(error){
-      console.error("Error fetching attendence data:",error)
+  };
+
+  const handleCheckboxChange = (studentId) => {
+    setAttendanceStatus((prev) => ({
+      ...prev,
+      [studentId]: !prev[studentId],
+    }));
+  };
+
+  const submitAttendance = async () => {
+    try {
+      for (const studentId of Object.keys(attendanceStatus)) {
+        const present = attendanceStatus[studentId];
+
+        await fetch(`http://localhost:5000/api/student/mark-attendance/${studentId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({ present }),
+        });
+      }
+      alert('Attendance marked successfully');
+    } catch (error) {
+      console.error('Error marking attendance:', error);
+      alert('Failed to mark attendance');
     }
-  }
+  };
+
   return (
     <div>
-      <h2>Attendence</h2>
-      {attendence.length === 0 ? (
-        <p>No data found.</p>
+      <h2>Mark Attendance</h2>
+      {loading ? (
+        <p>Loading students...</p>
       ) : (
-        <ul>
-          {attendence.map((entry, index) => (
-            <li key={index}>
-              {entry.name}: {entry.present ? 'Present' : 'Absent'}
-            </li>
-          ))}
-        </ul>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <ul>
+            {students.map((student) => (
+              <li key={student._id}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={attendanceStatus[student._id] || false}
+                    onChange={() => handleCheckboxChange(student._id)}
+                  />
+                  {student.name}
+                </label>
+              </li>
+            ))}
+          </ul>
+          <button onClick={submitAttendance}>Submit Attendance</button>
+        </form>
       )}
     </div>
   );
-}
+};
 
-export default Attendence
+export default Attendance;
