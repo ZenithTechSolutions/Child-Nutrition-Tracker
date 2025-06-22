@@ -1,44 +1,53 @@
-import express, { json } from 'express'
-const app = express()
-import { connect, connection } from 'mongoose'
-import cors from 'cors'
-import cookieParser from 'cookie-parser'
+import express, { json } from 'express';
+import { connect, connection } from 'mongoose';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
+import userRoute from './routes/User.js';
+import studentRoute from './routes/Student.js';
 
-//Middleware
+dotenv.config(); // ✅ use dotenv with ES6
+
+const app = express();
+
+// Middleware
 app.use(cors({
-    original: process.CLIENT_URL,
+    origin: process.env.CLIENT_URL, // ✅ correct key is 'origin', not 'original'
     credentials: true,
     optionsSuccessStatus: 200
-}))
-app.use(json())
-app.use(cookieParser())
-require('dotenv').config()
+}));
+app.use(json());
+app.use(cookieParser());
 
-//Port assign
-app.listen(process.env.PORT, () => {
-    console.log("Server started at port", process.env.PORT)
-})
-
-//MongoDB connection string
+// MongoDB connection
 connect(process.env.MONGO_URL)
-.then(() => {
-    console.log('DB connected!')
-})
-.catch((err) => {
-    console.log('DB not connected ', err)
-})
+    .then(() => {
+        console.log('DB connected!');
+    })
+    .catch((err) => {
+        console.error('DB not connected:', err);
+    });
 
-//Check route
-app.get("/", (req, res) => {
+// Basic route
+app.get('/', (req, res) => {
     if (connection.readyState === 1) {
-        res.send(`<h1>Server is Started and Running</h1> <h1 style="color:green">Database connnected successfully!!</h1>`)
+        res.send(`
+            <h1>Server is Started and Running</h1>
+            <h1 style="color:green">Database connected successfully!!</h1>
+        `);
     } else {
-        res.send(`<h1>Server is Running</h1> <h1 style="color:red;">Database not connnected! Check connection string</h1>`)
+        res.send(`
+            <h1>Server is Running</h1>
+            <h1 style="color:red;">Database not connected! Check connection string</h1>
+        `);
     }
-})
+});
 
-import userRoute from './routes/User.js'
-import studentRoute from './routes/Student.js'
+// API routes
+app.use('/api/auth', userRoute);
+app.use('/api/student', studentRoute);
 
-app.use('/api/auth', userRoute)
-app.use('/api/student', studentRoute)
+// Start server
+app.listen(process.env.PORT, () => {
+    console.log('Server started at port', process.env.PORT);
+});
