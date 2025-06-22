@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose';
 
 const studentSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
@@ -23,6 +23,6 @@ const studentSchema = new Schema({
             present: Boolean
         }
     ]
-})
+});
 
-export default model('Student', studentSchema)
+export default model('Student', studentSchema);
