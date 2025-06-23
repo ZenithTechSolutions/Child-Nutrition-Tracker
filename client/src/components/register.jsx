@@ -65,7 +65,7 @@ const Register = () => {
                 body: JSON.stringify(registerData)
             })
             const data = await newData.json();
-            alert(data.Message)
+            alert(data.message)
         }
         catch (err) {
             console.log('error:', err)
