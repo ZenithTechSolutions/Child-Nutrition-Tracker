@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { use, useEffect, useState } from 'react'
+import { Routes, Route, useNavigate } from "react-router-dom"
+import axios from 'axios'
 import Header from './components/header'
 import Home from "./components/home"
 import Login from './components/login'
@@ -9,19 +10,35 @@ import Bills from './components/bills'
 import Attendance from './components/Attendance'
 
 const App = () => {
-  const [login, setLogin] = useState(false)
-  const [text, setText] = useState("")
+  const [userName, setUserName] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get("auth/getUser", {
+          withCredentials: true
+        });
+        setUserName(res.data.name);
+      } catch (err) {
+        setUserName(null);
+        navigate('/login');
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   return (
     <>
-      <Header login={login} text={text} />
+      <Header userName={userName} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setUserName={setUserName} />} />
         <Route path="/beneficiaries" element={<Beneficiaries />} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/bills" element = {<Bills/>} />
-        <Route path="/attendance" element = {<Attendance/>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/bills" element={<Bills />} />
+        <Route path="/attendance" element={<Attendance />} />
       </Routes>
     </>
   )

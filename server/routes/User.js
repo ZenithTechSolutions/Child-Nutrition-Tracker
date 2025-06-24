@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: 'None',
             maxAge: 60 * 60 * 1000
         });
@@ -60,7 +60,7 @@ router.post('/register', async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: 'None',
             maxAge: 60 * 60 * 1000
         });
