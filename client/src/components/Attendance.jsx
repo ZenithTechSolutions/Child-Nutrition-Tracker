@@ -1,33 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../styles/attendence.css";
 
 const Attendance = () => {
-  const [students, setStudents] = useState([]);
   const [attendanceStatus, setAttendanceStatus] = useState({});
   const [loading, setLoading] = useState(true);
+  const [record, setRecord] = useState([]);
 
   useEffect(() => {
-    fetchStudents();
-  }, []);
+    const fetchAllStudents = async () => {
+      try {
+        const res = await axios.get("/student/all");
+        setRecord(res.data);
+      } catch (err) {
+        console.error("Failed to fetch students", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const fetchStudents = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/student/all', {
-        credentials: 'include',
-      });
-      const data = await response.json();
-      setStudents(data);
-      const initialStatus = {};
-      data.forEach((student) => {
-        initialStatus[student._id] = false;
-      });
-      setAttendanceStatus(initialStatus);
-    } catch (err) {
-      console.error('Failed to load students:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    fetchAllStudents();
+  }, []);
 
   const handleCheckboxChange = (studentId) => {
     setAttendanceStatus((prev) => ({
@@ -40,19 +33,17 @@ const Attendance = () => {
     try {
       for (const studentId of Object.keys(attendanceStatus)) {
         const present = attendanceStatus[studentId];
-        await fetch(`http://localhost:5000/api/student/mark-attendance/${studentId}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-          body: JSON.stringify({ present }),
-        });
+
+        await axios.post(`/student/mark-attendance/${studentId}`,
+          { present },
+          { withCredentials: true }
+        );
       }
-      alert('Attendance marked successfully');
+
+      alert("Attendance marked successfully");
     } catch (error) {
-      console.error('Error marking attendance:', error);
-      alert('Failed to mark attendance');
+      console.error("Error marking attendance:", error);
+      alert("Failed to mark attendance");
     }
   };
 
@@ -64,7 +55,7 @@ const Attendance = () => {
       ) : (
         <form className="attendance-form" onSubmit={(e) => e.preventDefault()}>
           <ul className="student-list">
-            {students.map((student) => (
+            {record.map((student) => (
               <li key={student._id} className="student-item">
                 <label>
                   <input
