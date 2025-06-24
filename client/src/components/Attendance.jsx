@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/attendence.css";
 
@@ -25,7 +25,7 @@ const Attendance = () => {
         const fetchAllStudents = async () => {
           try {
             setLoading(true);
-            const res = await axios.get("/student/all", { withCredentials: true });
+            const res = await axios.get("/student/all");
             setRecord(res.data);
             sessionStorage.setItem("students", JSON.stringify(res.data));
 
@@ -69,10 +69,8 @@ const Attendance = () => {
       alert("Attendance marked successfully");
     }  catch (error) {
     if (error.response && error.response.status === 400) {
-      // Only show alert, don't log as error
-      alert(error.response.data.message); // e.g., "Attendance already marked for today"
+      alert(error.response.data.message);
     } else {
-      // Only log unexpected errors
       console.error("Error marking attendance:", error);
       alert("Failed to mark attendance. Try again later.");
     }

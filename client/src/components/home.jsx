@@ -1,4 +1,3 @@
-import Header from "./header";
 import Footer from "./footer";
 import beneficiaries from "../assets/supporting - Copy.png";
 import attendance from "../assets/calendar.png";

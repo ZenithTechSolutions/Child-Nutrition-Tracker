@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios'; // Use the custom axios instance
+import axios from 'axios';
 import '../styles/bills.css';
 
 const Bills = () => {

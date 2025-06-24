@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from "react-router-dom"
 import axios from 'axios'
 import Header from './components/header'
@@ -18,6 +18,9 @@ const App = () => {
       try {
         const res = await axios.get("auth/getUser");
         setUserName(res.data.name);
+
+        const studentres = await axios.get("/student/all");
+        sessionStorage.setItem("students", JSON.stringify(studentres.data));
       } catch (err) {
         setUserName(null);
         navigate('/login');

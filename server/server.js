@@ -1,8 +1,5 @@
 import express, { json } from 'express';
 import mongoose from 'mongoose';
-
-const { connect, connection } = mongoose;
-
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
@@ -10,13 +7,12 @@ import userRoute from './routes/User.js';
 import studentRoute from './routes/Student.js';
 import billsRoute from './routes/Bills.js';
 
-dotenv.config(); // ✅ use dotenv with ES6
-
+dotenv.config();
 const app = express();
 
 // Middleware
 app.use(cors({
-    origin: process.env.CLIENT_URL, // ✅ correct key is 'origin', not 'original'
+    origin: process.env.CLIENT_URL,
     credentials: true,
     optionsSuccessStatus: 200
 }));
@@ -24,7 +20,7 @@ app.use(json());
 app.use(cookieParser());
 
 // MongoDB connection
-connect(process.env.MONGO_URL)
+mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log('DB connected!');
     })
@@ -34,7 +30,7 @@ connect(process.env.MONGO_URL)
 
 // Basic route
 app.get('/', (req, res) => {
-    if (connection.readyState === 1) {
+    if (mongoose.connection.readyState === 1) {
         res.send(`
             <h1>Server is Started and Running</h1>
             <h1 style="color:green">Database connected successfully!!</h1>

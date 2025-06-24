@@ -1,8 +1,7 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
-const { sign } = jwt;
 import { compare, hash } from 'bcrypt';
-import userModel from '../models/User.js'; // ✅ must include .js
+import userModel from '../models/User.js';
 
 const router = Router();
 
@@ -20,7 +19,7 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ message: 'Incorrect password' });
         }
 
-        const token = sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.cookie('token', token, {
             httpOnly: true,
@@ -56,7 +55,7 @@ router.post('/register', async (req, res) => {
 
         await newUser.save();
 
-        const token = sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.cookie('token', token, {
             httpOnly: true,
