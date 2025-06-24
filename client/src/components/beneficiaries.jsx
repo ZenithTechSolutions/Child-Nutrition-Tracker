@@ -47,7 +47,7 @@ const Beneficiaries = () => {
       const res = await axios.get("/student/all");
       setRecord(res.data);
       setAdd(false);
-      setStudent({ // reset form
+      setNewStudent({ // reset form
         name: "",
         dob: "",
         doj: "",
