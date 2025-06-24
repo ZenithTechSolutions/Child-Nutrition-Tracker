@@ -6,7 +6,7 @@ import Login from './components/login'
 import Beneficiaries from './components/beneficiaries'
 import Register from './components/register'
 import Bills from './components/bills'
-import Attendence from './components/Attendance'
+import Attendance from './components/Attendance'
 
 const App = () => {
   const [login, setLogin] = useState(false)
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/beneficiaries" element={<Beneficiaries />} />
         <Route path="/register" element={<Register/>} />
         <Route path="/bills" element = {<Bills/>} />
-        <Route path="/attendence" element = {<Attendance/>} />
+        <Route path="/attendance" element = {<Attendance/>} />
       </Routes>
     </>
   )
