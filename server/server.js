@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import userRoute from './routes/User.js';
 import studentRoute from './routes/Student.js';
+import billsRoute from './routes/Bills.js';
 
 dotenv.config(); // ✅ use dotenv with ES6
 
@@ -49,6 +50,7 @@ app.get('/', (req, res) => {
 // API routes
 app.use('/api/auth', userRoute);
 app.use('/api/student', studentRoute);
+app.use('/api/bills', billsRoute);
 
 // Start server
 app.listen(process.env.PORT, () => {
