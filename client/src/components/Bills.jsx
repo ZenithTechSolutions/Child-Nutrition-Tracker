@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios'; // Use the custom axios instance
 import '../styles/bills.css';
 
 const Bills = () => {
@@ -12,11 +13,9 @@ const Bills = () => {
 
   const checkTodayImage = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/bills/today');
-      const data = await res.json();
-
-      if (data.imageId) {
-        setTodayImageId(data.imageId);
+      const res = await axios.get('/api/bills/today');
+      if (res.data.imageId) {
+        setTodayImageId(res.data.imageId);
       }
     } catch (err) {
       console.error('Error checking today image:', err);
@@ -36,28 +35,23 @@ const Bills = () => {
     const formData = new FormData(e.target);
 
     try {
-      const response = await fetch('http://localhost:5000/api/bills/upload', {
-        method: 'POST',
-        body: formData,
+      const response = await axios.post('/api/bills/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert(data.message);
-        window.location.reload();
-      } else {
-        alert(data.error);
-      }
+      alert(response.data.message);
+      window.location.reload();
     } catch (error) {
-      alert('Upload failed.');
+      alert(error.response?.data?.error || 'Upload failed.');
       console.error(error);
     }
   };
 
   const viewTodayImage = () => {
     if (todayImageId) {
-      window.open(`http://localhost:5000/api/bills/${todayImageId}`, '_blank');
+      window.open(`${import.meta.env.VITE_BACKEND_URL}/api/bills/${todayImageId}`, '_blank');
     }
   };
 
@@ -67,15 +61,12 @@ const Bills = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/bills/by-date?date=${selectedDate}`);
-      if (response.ok) {
-        window.open(`http://localhost:5000/api/bills/by-date?date=${selectedDate}`, '_blank');
-      } else {
-        const errorData = await response.json();
-        alert(errorData.error || 'Image not found');
+      const response = await axios.get(`/api/bills/by-date?date=${selectedDate}`);
+      if (response.status === 200) {
+        window.open(`${import.meta.env.VITE_BACKEND_URL}/api/bills/by-date?date=${selectedDate}`, '_blank');
       }
     } catch (err) {
-      alert('Failed to fetch image.');
+      alert(err.response?.data?.error || 'Failed to fetch image.');
       console.error(err);
     }
   };
@@ -86,7 +77,6 @@ const Bills = () => {
     <div>
       <h1>Bills Upload</h1>
 
-      {/* Upload Form */}
       {!todayImageId && (
         <div>
           <form onSubmit={handleUpload} encType="multipart/form-data">
@@ -96,7 +86,6 @@ const Bills = () => {
         </div>
       )}
 
-      {/* View Today's Image */}
       {todayImageId && (
         <div>
           <p>You have already uploaded today's image.</p>
@@ -104,7 +93,6 @@ const Bills = () => {
         </div>
       )}
       <br />
-      {/* Search By Date */}
       <div>
         <h3>View Bill by Date</h3>
         <input
