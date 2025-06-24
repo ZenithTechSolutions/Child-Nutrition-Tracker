@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from 'react-router-dom'
+import axios from 'axios';
 import '../styles/register.css'
 
 const Register = () => {
@@ -54,22 +55,14 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const url = 'https://child-nutrition-tracker-fv87.onrender.com/api/auth/register'
-        // const url = 'http://localhost:5000'
+
         try {
-            const newData = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "content-Type": 'application/json'
-                },
-                body: JSON.stringify(registerData)
-            })
-            const data = await newData.json();
-            alert(data.message)
+            const response = await axios.post('/auth/register', registerData)
+            alert(response.data.message);
         }
-        catch (err) {
-            console.log('error:', err)
-            alert(err)
+        catch (error) {
+            const errorMessage = err.response?.data?.message || "Something went wrong";
+            alert(errorMessage);
         }
     }
 
