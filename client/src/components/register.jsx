@@ -12,6 +12,8 @@ const Register = () => {
         district: '',
         taluk: ''
     })
+
+    const [isLoading, setIsLoading] = useState(false);
     
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -20,14 +22,14 @@ const Register = () => {
             [id]: value
         }))
     }
-    
+
     const districtData = {
         "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Krishna", "Kurnool", "Nellore", "Prakasam", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"],
         "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Salem", "Tiruchirappalli", "Erode", "Tirunelveli", "Vellore", "Thoothukudi", "Dindigul"],
         "Karnataka": ["Bengaluru Urban", "Mysuru", "Belagavi", "Kalaburagi", "Mangaluru", "Shivamogga", "Davanagere", "Ballari", "Hubballi-Dharwad", "Tumakuru"],
         "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Aurangabad", "Solapur", "Kolhapur", "Amravati", "Sangli"]
     };
-    
+
     const talukData = {
         "Chennai": ["Egmore", "Guindy", "Mylapore", "Tondiarpet", "Velachery"],
         "Coimbatore": ["Gandhipuram", "Peelamedu", "Singanallur", "RS Puram", "Sulur"],
@@ -35,7 +37,7 @@ const Register = () => {
         "Mumbai": ["Andheri", "Borivali", "Dadar", "Kurla", "Mulund"],
         "Pune": ["Haveli", "Shirur", "Daund", "Mulshi", "Bhor"]
     };
-    
+
     const handleStateSelect = (selectedState) => {
         setRegisterData((registerData) => ({
             ...registerData,
@@ -44,7 +46,7 @@ const Register = () => {
             taluk: ''
         }))
     };
-    
+
     const handleDistrictSelect = (selectedDistrict) => {
         setRegisterData((registerData) => ({
             ...registerData,
@@ -52,12 +54,13 @@ const Register = () => {
             taluk: ''
         }))
     }
-    
+
     const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
+            setIsLoading(true);
             const response = await axios.post('/auth/register', registerData)
             navigate("/login");
             alert(response.data.message);
@@ -65,6 +68,8 @@ const Register = () => {
         catch (error) {
             const errorMessage = error.response?.data?.message || "Something went wrong";
             alert(errorMessage);
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -76,7 +81,7 @@ const Register = () => {
             </div>
             <div className="Register-right-container">
                 <h1>Create an account</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={isLoading ? null : handleSubmit}>
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" placeholder="Enter your name" value={registerData.name} onChange={handleChange} required />
 
@@ -110,7 +115,7 @@ const Register = () => {
                         ))}
                     </select>
 
-                    <button type="submit">Register</button>
+                    <button type="submit">{isLoading ? "Loading" : "Register"}</button>
 
                     <p>Already have a Account?<Link to='/login'> Login Here</Link></p>
                 </form>

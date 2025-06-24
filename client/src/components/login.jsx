@@ -13,8 +13,11 @@ const Login = ({ setUserName }) => {
     password: ""
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleLogin = async () => {
     try {
+      setIsLoading(true);
       const response = await axios.post("/auth/login", loginData);
       alert(response.data.message);
 
@@ -25,6 +28,9 @@ const Login = ({ setUserName }) => {
       setUserName(res.data.name);
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
+    }
+    finally {
+      setIsLoading(false);
     }
   };
 
@@ -87,7 +93,7 @@ const Login = ({ setUserName }) => {
 
             <p className="forgot-link">Forgot MPIN?</p>
 
-            <button onClick={handleLogin}>Login</button>
+            <button onClick={isLoading ? null : handleLogin}>{isLoading ? "Loading" : "Login"}</button>
 
             <p>Don't Have An Account? <Link to='/register'>Register</Link> </p>
           </div>

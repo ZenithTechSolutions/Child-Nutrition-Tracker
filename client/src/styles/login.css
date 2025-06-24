@@ -82,14 +82,19 @@
   border-radius: var(--radius);
   width: 320px;
 }
-.form-container button{
-  width: 280px;
-  height: 40px;
-  margin-top: 20px;
-  border-radius: 10px;
-  border: none;
+.form-container button {
   background-color: #0047f9;
+  margin: 5px auto;
+  padding: 5px 30px;
+  font-size: 1.2rem;
   color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.form-container button:hover {
+  background-color: #07329c;
+  transform: scale(1.1);
 }
 
 .input-box {

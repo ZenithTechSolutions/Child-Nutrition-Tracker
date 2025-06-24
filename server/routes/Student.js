@@ -1,5 +1,4 @@
 import express from 'express';
-import dayjs from 'dayjs'
 import Student from '../models/Student.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
