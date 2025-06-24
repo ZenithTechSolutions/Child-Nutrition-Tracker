@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import '../styles/register.css'
 
@@ -12,7 +12,7 @@ const Register = () => {
         district: '',
         taluk: ''
     })
-
+    
     const handleChange = (e) => {
         const { id, value } = e.target;
         setRegisterData((registerData) => ({
@@ -20,14 +20,14 @@ const Register = () => {
             [id]: value
         }))
     }
-
+    
     const districtData = {
         "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur", "Krishna", "Kurnool", "Nellore", "Prakasam", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"],
         "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Salem", "Tiruchirappalli", "Erode", "Tirunelveli", "Vellore", "Thoothukudi", "Dindigul"],
         "Karnataka": ["Bengaluru Urban", "Mysuru", "Belagavi", "Kalaburagi", "Mangaluru", "Shivamogga", "Davanagere", "Ballari", "Hubballi-Dharwad", "Tumakuru"],
         "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Aurangabad", "Solapur", "Kolhapur", "Amravati", "Sangli"]
     };
-
+    
     const talukData = {
         "Chennai": ["Egmore", "Guindy", "Mylapore", "Tondiarpet", "Velachery"],
         "Coimbatore": ["Gandhipuram", "Peelamedu", "Singanallur", "RS Puram", "Sulur"],
@@ -35,7 +35,7 @@ const Register = () => {
         "Mumbai": ["Andheri", "Borivali", "Dadar", "Kurla", "Mulund"],
         "Pune": ["Haveli", "Shirur", "Daund", "Mulshi", "Bhor"]
     };
-
+    
     const handleStateSelect = (selectedState) => {
         setRegisterData((registerData) => ({
             ...registerData,
@@ -44,7 +44,7 @@ const Register = () => {
             taluk: ''
         }))
     };
-
+    
     const handleDistrictSelect = (selectedDistrict) => {
         setRegisterData((registerData) => ({
             ...registerData,
@@ -52,12 +52,14 @@ const Register = () => {
             taluk: ''
         }))
     }
-
+    
+    const navigate = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
             const response = await axios.post('/auth/register', registerData)
+            navigate("/login");
             alert(response.data.message);
         }
         catch (error) {
