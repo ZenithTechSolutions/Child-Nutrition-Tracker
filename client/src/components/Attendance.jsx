@@ -46,10 +46,16 @@ const Attendance = () => {
       }
 
       alert("Attendance marked successfully");
-    } catch (error) {
+    }  catch (error) {
+    if (error.response && error.response.status === 400) {
+      // Only show alert, don't log as error
+      alert(error.response.data.message); // e.g., "Attendance already marked for today"
+    } else {
+      // Only log unexpected errors
       console.error("Error marking attendance:", error);
-      alert("Failed to mark attendance");
+      alert("Failed to mark attendance. Try again later.");
     }
+  }
   };
 
   return (

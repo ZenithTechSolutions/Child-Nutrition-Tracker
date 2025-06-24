@@ -40,16 +40,39 @@ router.post('/add-student', authMiddleware, async (req, res) => {
 
 // Mark attendance
 router.post('/mark-attendance/:studentId', authMiddleware, async (req, res) => {
-    const { studentId } = req.params;
-    const { present } = req.body;
-    try {
-        const student = await Student.findById(studentId);
-        student.attendance.push({ present });
-        await student.save();
-        res.status(200).json({ message: 'Attendance marked' });
-    } catch (err) {
-        res.status(500).json({ message: 'Error marking attendance' });
+  const { studentId } = req.params;
+  const { present } = req.body;
+
+  try {
+    const student = await Student.findById(studentId);
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
     }
+
+    // Create today's date at 00:00:00
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Check if attendance already marked today
+    const alreadyMarked = student.attendance.some((entry) => {
+      const entryDate = new Date(entry.date);
+      entryDate.setHours(0, 0, 0, 0);
+      return entryDate.getTime() === today.getTime();
+    });
+
+    if (alreadyMarked) {
+      return res.status(400).json({ message: 'Attendance already marked for today' });
+    }
+
+    // Save attendance with full timestamp
+    student.attendance.push({ present, date: new Date() });
+    await student.save();
+
+    return res.status(200).json({ message: 'Attendance marked successfully' });
+  } catch (err) {
+    console.error('Error marking attendance:', err);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
 });
 
 // Update measurements
