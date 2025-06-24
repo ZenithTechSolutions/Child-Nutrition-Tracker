@@ -1,11 +1,13 @@
 import { FaPhone } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 import "../styles/login.css";
 import { useState } from "react";
 import axios from "axios";
 
 const Login = ({ setLogin, setText }) => {
+  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     number: "",
     password: ""
@@ -15,6 +17,7 @@ const Login = ({ setLogin, setText }) => {
     try {
       const response = await axios.post("/auth/login", loginData);
       alert(response.data.message);
+      navigate('/');
       setLogin(true);
       setText(loginData.number);
     } catch (err) {
