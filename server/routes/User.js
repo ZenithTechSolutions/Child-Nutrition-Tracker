@@ -45,7 +45,7 @@ router.post('/register', async (req, res) => {
         }
 
         const hashedPassword = await hash(password, 10);
-        const newUser = new registerModel({
+        const newUser = new userModel({
             name,
             number,
             password: hashedPassword,
