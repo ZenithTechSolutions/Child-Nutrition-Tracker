@@ -6,7 +6,6 @@ import Home from "./components/home"
 import Login from './components/login'
 import Beneficiaries from './components/beneficiaries'
 import Register from './components/register'
-import Bills from './components/bills'
 import Attendance from './components/Attendance'
 
 const App = () => {
@@ -35,7 +34,6 @@ const App = () => {
         <Route path="/login" element={<Login setUserName={setUserName} />} />
         <Route path="/beneficiaries" element={<Beneficiaries />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/bills" element={<Bills />} />
         <Route path="/attendance" element={<Attendance />} />
       </Routes>
     </>
