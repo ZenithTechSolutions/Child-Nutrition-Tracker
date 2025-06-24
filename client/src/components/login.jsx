@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const Login = ({ setLogin, setText }) => {
+  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     number: "",
     password: ""
@@ -16,7 +17,6 @@ const Login = ({ setLogin, setText }) => {
     try {
       const response = await axios.post("/auth/login", loginData);
       alert(response.data.message);
-      const navigate = useNavigate();
       navigate('/');
       setLogin(true);
       setText(loginData.number);
