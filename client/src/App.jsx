@@ -6,6 +6,7 @@ import Login from './components/login'
 import Beneficiaries from './components/beneficiaries'
 import Register from './components/register'
 import Bills from './components/bills'
+import Attendence from './components/Attendence'
 
 const App = () => {
   const [login, setLogin] = useState(false)
