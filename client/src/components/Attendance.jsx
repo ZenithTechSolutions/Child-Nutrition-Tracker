@@ -12,6 +12,11 @@ const Attendance = () => {
       try {
         const res = await axios.get("/student/all");
         setRecord(res.data);
+         const initialAttendance = {};
+      res.data.forEach((student) => {
+        initialAttendance[student._id] = false;
+      });
+      setAttendanceStatus(initialAttendance);
       } catch (err) {
         console.error("Failed to fetch students", err);
       } finally {
