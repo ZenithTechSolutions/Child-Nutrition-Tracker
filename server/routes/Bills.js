@@ -1,13 +1,14 @@
-const express = require('express');
-const multer = require('multer');
-const Image = require('../models/Bills');
+import express from 'express';
+import multer from 'multer';
+import Image from '../models/Bills.js'; // Make sure your model file also uses ES6 export
+
 const router = express.Router();
 
 // Store in memory since you save it in MongoDB
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-//  Upload endpoint: allow only 1 per day
+// ✅ Upload endpoint: allow only 1 per day
 router.post('/upload', upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
@@ -50,9 +51,12 @@ router.get('/by-date', async (req, res) => {
   }
 
   try {
-    const date = new Date(dateQuery);
-    const startOfDay = new Date(date.setHours(0, 0, 0, 0));
-    const endOfDay = new Date(date.setHours(23, 59, 59, 999));
+    const baseDate = new Date(dateQuery);
+    const startOfDay = new Date(baseDate);
+    startOfDay.setHours(0, 0, 0, 0);
+
+    const endOfDay = new Date(baseDate);
+    endOfDay.setHours(23, 59, 59, 999);
 
     const image = await Image.findOne({
       uploadedAt: { $gte: startOfDay, $lte: endOfDay }
@@ -106,5 +110,4 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
-  
+export default router;
