@@ -1,4 +1,5 @@
 import express from 'express';
+import dayjs from 'dayjs'
 import Student from '../models/Student.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
@@ -39,16 +40,31 @@ router.post('/add-student', authMiddleware, async (req, res) => {
 
 // Mark attendance
 router.post('/mark-attendance/:studentId', authMiddleware, async (req, res) => {
-    const { studentId } = req.params;
-    const { present } = req.body;
-    try {
-        const student = await Student.findById(studentId);
-        student.attendance.push({ present });
-        await student.save();
-        res.status(200).json({ message: 'Attendance marked' });
-    } catch (err) {
-        res.status(500).json({ message: 'Error marking attendance' });
+  const { studentId } = req.params;
+  const { present } = req.body;
+
+  try {
+    const student = await Student.findById(studentId);
+    if (!student) return res.status(404).json({ message: 'Student not found' });
+
+    const today = dayjs().startOf("day");
+
+    const alreadyMarked = student.attendance.some((entry) =>
+      dayjs(entry.date).isSame(today, 'day')
+    );
+
+    if (alreadyMarked) {
+      return res.status(400).json({ message: 'Attendance already marked for today' });
     }
+
+    student.attendance.push({ present, date: new Date() });
+    await student.save();
+
+    res.status(200).json({ message: 'Attendance marked' });
+  } catch (err) {
+    console.error('Attendance Error:', err);
+    res.status(500).json({ message: 'Error marking attendance' });
+  }
 });
 
 // Update measurements
