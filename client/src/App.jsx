@@ -7,6 +7,7 @@ import Login from './components/login'
 import Beneficiaries from './components/beneficiaries'
 import Register from './components/register'
 import Attendance from './components/Attendance'
+import Bills from './components/Bills'
 
 const App = () => {
   const [userName, setUserName] = useState(null);
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/beneficiaries" element={<Beneficiaries />} />
         <Route path="/register" element={<Register />} />
         <Route path="/attendance" element={<Attendance />} />
+        <Route path="/bills" element={<Bills />} />
       </Routes>
     </>
   )
