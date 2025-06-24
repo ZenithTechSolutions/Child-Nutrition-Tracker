@@ -63,7 +63,7 @@ const Bills = () => {
     try {
       const response = await axios.get(`/bills/by-date?date=${selectedDate}`);
       if (response.status === 200) {
-        window.open(`${import.meta.env.VITE_BACKEND_URL}/api/bills/by-date?date=${selectedDate}`, '_blank');
+        window.open(`${import.meta.env.VITE_BACKEND_URL}/bills/by-date?date=${selectedDate}`, '_blank');
       }
     } catch (err) {
       alert(err.response?.data?.error || 'Failed to fetch image.');
