@@ -61,7 +61,7 @@ const Register = () => {
             alert(response.data.message);
         }
         catch (error) {
-            const errorMessage = err.response?.data?.message || "Something went wrong";
+            const errorMessage = error.response?.data?.message || "Something went wrong";
             alert(errorMessage);
         }
     }

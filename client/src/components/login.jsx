@@ -1,15 +1,28 @@
 import { FaPhone } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import "../styles/login.css";
 import { useState } from "react";
+import axios from "axios";
 
-const Login = ({setLogin,setText}) => {
-  const [input, setInput] = useState("");
-  const handleInput=()=>{
-    setLogin(true);
-    setText(input);
-}
+const Login = ({ setLogin, setText }) => {
+  const [loginData, setLoginData] = useState({
+    number: "",
+    password: ""
+  });
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("/auth/login", loginData);
+      alert(response.data.message);
+      setLogin(true);
+      setText(loginData.number);
+    } catch (err) {
+      console.error("Login error:", err);
+      alert(err.response?.data?.message || "Login failed");
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="login-leftside">
@@ -22,40 +35,61 @@ const Login = ({setLogin,setText}) => {
           <h3>WELCOME BACK</h3>
           <p>Please enter your details below</p>
 
-
-            <div className="login-btn">
-              <p>Login</p>
-            </div>
+          <div className="login-btn">
+            <p>Login</p>
+          </div>
 
           <div className="form-container">
+
             <div className="input-box">
               <FaPhone className="icon" />
-              <form className="loginForm" >
+              <form className="loginForm" onSubmit={(e) => e.preventDefault()}>
                 <label>Mobile Number</label>
-                <input type="tel" placeholder="+91 XXXXXXXXXX" value={input} onChange={(e)=>setInput(e.target.value)} />
+                <input
+                  type="tel"
+                  placeholder="+91 XXXXXXXXXX"
+                  value={loginData.number}
+                  onChange={(e) =>
+                    setLoginData({ ...loginData, number: e.target.value })
+                  }
+                  pattern="[0-9]{10}"
+                  required
+                />
               </form>
             </div>
 
             <div className="input-box">
               <MdPassword className="icon" />
-              <form className="loginForm">
+              <form className="loginForm" onSubmit={(e) => e.preventDefault()}>
                 <label>
                   MPIN<span className="required">*</span>
                 </label>
-                <input type="password" placeholder="_ _ _ _" />
+                <input
+                  type="password"
+                  placeholder="_ _ _ _"
+                  value={loginData.password}
+                  onChange={(e) =>
+                    setLoginData({ ...loginData, password: e.target.value })
+                  }
+                  pattern="\d{4}"
+                  minLength={4}
+                  maxLength={4}
+                  inputMode="numeric"
+                  required
+                />
               </form>
             </div>
 
             <p className="forgot-link">Forgot MPIN?</p>
 
-            <Link to="/">
-              <button onClick={handleInput}>Login</button>
-            </Link>
+            <button onClick={handleLogin}>Login</button>
+
+            <p>Don't Have An Account? <Link to='/register'>Register</Link> </p>
           </div>
-          <p>Don't Have An Account? <Link to='/register'>Register</Link> </p>
         </div>
       </div>
     </div>
   );
 };
+
 export default Login;
