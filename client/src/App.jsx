@@ -15,7 +15,7 @@ const App = () => {
       <Header login={login} text={text} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login setLogin={setLogin} setText={setText} />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/beneficiaries" element={<Beneficiaries />} />
         <Route path="/register" element={<Register/>} />
       </Routes>

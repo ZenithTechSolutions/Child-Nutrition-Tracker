@@ -6,7 +6,7 @@ import "../styles/login.css";
 import { useState } from "react";
 import axios from "axios";
 
-const Login = ({ setLogin, setText }) => {
+const Login = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     number: "",
@@ -18,10 +18,7 @@ const Login = ({ setLogin, setText }) => {
       const response = await axios.post("/auth/login", loginData);
       alert(response.data.message);
       navigate('/');
-      setLogin(true);
-      setText(loginData.number);
     } catch (err) {
-      console.error("Login error:", err);
       alert(err.response?.data?.message || "Login failed");
     }
   };

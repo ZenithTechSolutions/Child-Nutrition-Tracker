@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const userSchema = new Schema({
+const userModel = new Schema({
     name: String,
     number: String,
     password: String,
@@ -11,4 +11,4 @@ const userSchema = new Schema({
     bills: [{ type: Schema.Types.ObjectId, ref: 'Bill' }]
 });
 
-export default model('User', userSchema);
+export default model('User', userModel);

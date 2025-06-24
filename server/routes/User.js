@@ -2,7 +2,7 @@ import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 const { sign } = jwt;
 import { compare, hash } from 'bcrypt';
-import registerModel from '../models/User.js'; // ✅ must include .js
+import userModel from '../models/User.js'; // ✅ must include .js
 
 const router = Router();
 
@@ -10,7 +10,7 @@ const router = Router();
 router.post('/login', async (req, res) => {
     const { number, password } = req.body;
     try {
-        const user = await registerModel.findOne({ number });
+        const user = await userModel.findOne({ number });
         if (!user) {
             return res.status(404).json({ message: 'Phone number not exists! Please register' });
         }
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
 router.post('/register', async (req, res) => {
     const { name, number, password, state, district, taluk } = req.body;
     try {
-        const existingUser = await registerModel.findOne({ number });
+        const existingUser = await userModel.findOne({ number });
         if (existingUser) {
             return res.status(302).json({ message: 'Account already exists. Please log in.' });
         }
@@ -69,6 +69,27 @@ router.post('/register', async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+// Get user details
+router.get('/getUser', async (req, res) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    } else {
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const user = await userModel.findById(decoded.userId).select('name');
+            if (!user) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+            res.status(200).json({ name: user.name });
+        }
+        catch (err) {
+            console.error(err);
+            res.status(500).json({ message: 'Internal server error' });
+        }
     }
 });
 
