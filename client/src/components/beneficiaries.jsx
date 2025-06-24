@@ -21,16 +21,23 @@ const Beneficiaries = () => {
   });
 
   useEffect(() => {
-    const fetchAllStudents = async () => {
-      try {
-        const res = await axios.get("/student/all");
-        setRecord(res.data);
-      } catch (err) {
-        console.error("Failed to fetch students", err);
-      }
-    };
+    const storedStudents = sessionStorage.getItem("students");
 
-    fetchAllStudents();
+    if (storedStudents) {
+      setRecord(JSON.parse(storedStudents));
+    } else {
+      const fetchAllStudents = async () => {
+        try {
+          const res = await axios.get("/student/all");
+          setRecord(res.data);
+          sessionStorage.setItem("students", JSON.stringify(res.data));
+        } catch (err) {
+          console.error("Failed to fetch students", err);
+        }
+      };
+
+      fetchAllStudents();
+    }
   }, []);
 
 
@@ -46,6 +53,7 @@ const Beneficiaries = () => {
       alert("Student added successfully");
       const res = await axios.get("/student/all");
       setRecord(res.data);
+      sessionStorage.setItem("students", JSON.stringify(res.data));
       setAdd(false);
       setNewStudent({ // reset form
         name: "",

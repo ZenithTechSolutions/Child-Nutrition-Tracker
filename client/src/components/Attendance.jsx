@@ -8,24 +8,45 @@ const Attendance = () => {
   const [record, setRecord] = useState([]);
 
   useEffect(() => {
-    const fetchAllStudents = async () => {
-      try {
-        const res = await axios.get("/student/all");
-        setRecord(res.data);
-         const initialAttendance = {};
-      res.data.forEach((student) => {
-        initialAttendance[student._id] = false;
-      });
-      setAttendanceStatus(initialAttendance);
-      } catch (err) {
-        console.error("Failed to fetch students", err);
-      } finally {
+    const fetchStudentsFromStorage = () => {
+      const stored = sessionStorage.getItem("students");
+
+      if (stored) {
+        const students = JSON.parse(stored);
+        setRecord(students);
+
+        const initialAttendance = {};
+        students.forEach((student) => {
+          initialAttendance[student._id] = false;
+        });
+        setAttendanceStatus(initialAttendance);
         setLoading(false);
+      } else {
+        const fetchAllStudents = async () => {
+          try {
+            setLoading(true);
+            const res = await axios.get("/student/all", { withCredentials: true });
+            setRecord(res.data);
+            sessionStorage.setItem("students", JSON.stringify(res.data));
+
+            const initialAttendance = {};
+            res.data.forEach((student) => {
+              initialAttendance[student._id] = false;
+            });
+            setAttendanceStatus(initialAttendance);
+          } catch (err) {
+            console.error("Failed to fetch students", err);
+          } finally {
+            setLoading(false);
+          }
+        };
+
+        fetchAllStudents();
       }
     };
 
-    fetchAllStudents();
-  }, []);
+    fetchStudentsFromStorage();
+  }, []);  
 
   const handleCheckboxChange = (studentId) => {
     setAttendanceStatus((prev) => ({

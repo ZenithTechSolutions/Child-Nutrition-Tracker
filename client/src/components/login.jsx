@@ -18,14 +18,20 @@ const Login = ({ setUserName }) => {
   const handleLogin = async () => {
     try {
       setIsLoading(true);
+
+      // 1.login
       const response = await axios.post("/auth/login", loginData);
       alert(response.data.message);
-
       navigate('/');
-      const res = await axios.get("/auth/getUser", {
-        withCredentials: true
-      });
+
+      // 2.Get user
+      const res = await axios.get("/auth/getUser");
       setUserName(res.data.name);
+
+      // 3.Get students
+      const studentres = await axios.get("/student/all")
+      sessionStorage.setItem("students", JSON.stringify(studentres.data));
+
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
     }
