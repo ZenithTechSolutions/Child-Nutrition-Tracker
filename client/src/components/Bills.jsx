@@ -13,7 +13,7 @@ const Bills = () => {
 
   const checkTodayImage = async () => {
     try {
-      const res = await axios.get('/api/bills/today');
+      const res = await axios.get('/bills/today');
       if (res.data.imageId) {
         setTodayImageId(res.data.imageId);
       }
@@ -35,7 +35,7 @@ const Bills = () => {
     const formData = new FormData(e.target);
 
     try {
-      const response = await axios.post('/api/bills/upload', formData, {
+      const response = await axios.post('/bills/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -51,7 +51,7 @@ const Bills = () => {
 
   const viewTodayImage = () => {
     if (todayImageId) {
-      window.open(`${import.meta.env.VITE_BACKEND_URL}/api/bills/${todayImageId}`, '_blank');
+      window.open(`${import.meta.env.VITE_BACKEND_URL}/bills/${todayImageId}`, '_blank');
     }
   };
 
@@ -61,7 +61,7 @@ const Bills = () => {
     }
 
     try {
-      const response = await axios.get(`/api/bills/by-date?date=${selectedDate}`);
+      const response = await axios.get(`/bills/by-date?date=${selectedDate}`);
       if (response.status === 200) {
         window.open(`${import.meta.env.VITE_BACKEND_URL}/api/bills/by-date?date=${selectedDate}`, '_blank');
       }
