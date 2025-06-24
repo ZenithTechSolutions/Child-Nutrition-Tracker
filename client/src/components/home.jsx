@@ -15,7 +15,7 @@ const Home = () => {
     { img: attendance, name: "Attendance", link: "attendance" },
     { img: foodtracking, name: "Food Tracking", link: "foodtracking" },
     { img: measurement, name: "Measurement", link: "measurement" },
-    { img: bill, name: "Recipts/Bills", link: "bill" },
+    { img: bill, name: "Recipts/Bills", link: "bills" },
   ];
 
   return (
