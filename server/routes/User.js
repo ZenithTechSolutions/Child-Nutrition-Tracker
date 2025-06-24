@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
     try {
         const user = await userModel.findOne({ number });
         if (!user) {
-            return res.status(404).json({ message: 'Phone number not exists! Please register' });
+            return res.status(404).json({ message: 'Phone number does not exist! Please register' });
         }
 
         const isMatch = await compare(password, user.password);
