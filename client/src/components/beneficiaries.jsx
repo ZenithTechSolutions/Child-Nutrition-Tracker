@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import "../styles/beneficiaries.css";
 
 const Beneficiaries = () => {
   const [add, setAdd] = useState(false); // Open Add Students Menu
+  const [record, setRecord] = useState([]); // To Store All Students Data
 
-  // To Store User Data
-  const [data, setData] = useState({
+  // To Store NewStudent Data
+  const [newStudent, setNewStudent] = useState({
     name: "",
     dob: "",
     doj: "",
@@ -18,48 +20,54 @@ const Beneficiaries = () => {
     contact: "",
   });
 
-  const [record, setRecord] = useState(() => {
-    const savedRecords = localStorage.getItem("students");
-    return savedRecords ? JSON.parse(savedRecords) : [];
-  });
-
   useEffect(() => {
-    localStorage.setItem("students", JSON.stringify(record));
-  }, [record]);
+    const fetchAllStudents = async () => {
+      try {
+        const res = await axios.get("/student/all");
+        setRecord(res.data);
+      } catch (err) {
+        console.error("Failed to fetch students", err);
+      }
+    };
+
+    fetchAllStudents();
+  }, []);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setData({ ...data, [name]: value });
+    setNewStudent({ ...newStudent, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (Object.values(data).some((field) => !field.trim())) {
-      alert("All fields are required.");
-      return;
+    try {
+      await axios.post('/student/add-student', newStudent);
+      alert("Student added successfully");
+      const res = await axios.get("/student/all");
+      setRecord(res.data);
+      setAdd(false);
+      setData({ // reset form
+        name: "",
+        dob: "",
+        doj: "",
+        age: "",
+        height: "",
+        weight: "",
+        father: "",
+        mother: "",
+        address: "",
+        contact: "",
+      })
+    } catch (error) {
+      console.error("Error adding student:", error);
     }
-
-    setRecord([...record, data]);
-    setData({
-      name: "",
-      dob: "",
-      doj: "",
-      age: "",
-      height: "",
-      weight: "",
-      father: "",
-      mother: "",
-      address: "",
-      contact: "",
-    });
-
-    setAdd(false);
-  };
+  }
 
   return (
     <>
       <div className={`overlay ${add ? "overlay-active" : ""}`} onClick={() => setAdd(false)}></div>
-      
+
       <div className="box">
         <div className="bene-container">
           <div className="bene-content">
@@ -90,40 +98,40 @@ const Beneficiaries = () => {
           <h2>Student Details</h2>
           <form onSubmit={handleSubmit}>
             <label>Name:</label>
-            <input 
-              type="text" 
-              name="name" 
-              value={data.name} 
-              onChange={handleInputChange} 
-              required 
-            /> 
+            <input
+              type="text"
+              name="name"
+              value={newStudent.name}
+              onChange={handleInputChange}
+              required
+            />
 
             <label>Date of Birth:</label>
-            <input type="date" name="dob" value={data.dob} onChange={handleInputChange} required />
+            <input type="date" name="dob" value={newStudent.dob} onChange={handleInputChange} required />
 
             <label>Date of Join:</label>
-            <input type="date" name="doj" value={data.doj} onChange={handleInputChange} required max={new Date().toISOString().split("T")[0]} />
+            <input type="date" name="doj" value={newStudent.doj} onChange={handleInputChange} required max={new Date().toISOString().split("T")[0]} />
 
             <label>Age:</label>
-            <input type="number" name="age" value={data.age} onChange={handleInputChange} required />
+            <input type="number" name="age" value={newStudent.age} onChange={handleInputChange} required />
 
             <label>Height:</label>
-            <input type="number" name="height" value={data.height} onChange={handleInputChange} required />
+            <input type="number" name="height" value={newStudent.height} onChange={handleInputChange} required />
 
             <label>Weight:</label>
-            <input type="number" name="weight" value={data.weight} onChange={handleInputChange} required />
+            <input type="number" name="weight" value={newStudent.weight} onChange={handleInputChange} required />
 
             <label>Father's Name:</label>
-            <input type="text" name="father" value={data.father} onChange={handleInputChange} required />
+            <input type="text" name="father" value={newStudent.father} onChange={handleInputChange} required />
 
             <label>Mother's Name:</label>
-            <input type="text" name="mother" value={data.mother} onChange={handleInputChange} required />
+            <input type="text" name="mother" value={newStudent.mother} onChange={handleInputChange} required />
 
             <label>Address:</label>
-            <textarea name="address" value={data.address} onChange={handleInputChange} required />
+            <textarea name="address" value={newStudent.address} onChange={handleInputChange} required />
 
             <label>Contact:</label>
-            <input type="tel" name="contact" value={data.contact} onChange={handleInputChange} required />
+            <input type="tel" name="contact" value={newStudent.contact} onChange={handleInputChange} required />
 
             <div className="popup-buttons">
               <button type="submit" className="submit-btn">Submit</button>
