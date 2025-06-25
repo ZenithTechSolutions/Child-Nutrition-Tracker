@@ -1,14 +1,14 @@
 import express from 'express';
 import multer from 'multer';
 import Image from '../models/Bills.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
 const router = express.Router();
-
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 // Upload
-router.post('/upload', upload.single('image'), async (req, res) => {
+router.post('/upload', authMiddleware, upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: 'No file uploaded' });
@@ -42,7 +42,7 @@ router.post('/upload', upload.single('image'), async (req, res) => {
 });
 
 // View image by date
-router.get('/by-date', async (req, res) => {
+router.get('/by-date', authMiddleware, async (req, res) => {
   const dateQuery = req.query.date;
 
   if (!dateQuery) {
@@ -73,7 +73,7 @@ router.get('/by-date', async (req, res) => {
 });
 
 // Get today's image ID
-router.get('/today', async (req, res) => {
+router.get('/today', authMiddleware, async (req, res) => {
   try {
     const startOfDay = new Date();
     startOfDay.setHours(0, 0, 0, 0);
@@ -95,7 +95,7 @@ router.get('/today', async (req, res) => {
 });
 
 // Get image by ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', authMiddleware, async (req, res) => {
   try {
     const image = await Image.findById(req.params.id);
     if (!image) {
