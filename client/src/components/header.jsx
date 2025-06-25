@@ -1,9 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import axios from 'axios';
 import '../styles/header.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = ({ userName }) => {
+
+    const navigate = useNavigate();
+    const handleLogout = async () => {
+        try {
+            const res = await axios.post('/auth/logout')
+            alert(res.data.message || "Logout successful");
+            navigate('/login')
+        } catch (error) {
+            alert(res.data.message || "Logout failed");
+            console.error("Logout failed:", error);
+        }
+    }
 
     return (
         <>
@@ -12,6 +25,7 @@ const Header = ({ userName }) => {
                 <div className="header-profile">
                     <p><Link to="/">Home</Link></p>
                     <p><Link to={userName ? null : '/login'}>{userName ? "Hi, " + userName : "Login"}</Link></p>
+                    {userName && <p onClick={handleLogout}>Logout</p>}
                     <FontAwesomeIcon icon={faCircleUser} style={{ color: "#fff", fontSize: "30px" }} />
                 </div>
             </header>

@@ -92,4 +92,18 @@ router.get('/getUser', async (req, res) => {
     }
 });
 
+router.post('/logout', (req, res) => {
+    try {
+        res.clearCookie('token', {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None',
+            path: '/',
+        })
+        res.status(200).json({ message: 'Logout successful' })
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' })
+    }
+})
+
 export default router;
