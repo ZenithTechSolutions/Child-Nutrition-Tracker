@@ -4,13 +4,15 @@ import axios from 'axios';
 import '../styles/header.css'
 import { Link, useNavigate } from "react-router-dom";
 
-const Header = ({ userName }) => {
+const Header = ({ userName, setUserName }) => {
 
     const navigate = useNavigate();
     const handleLogout = async () => {
         try {
             const res = await axios.post('/auth/logout')
-            alert(res.data.message || "Logout successful");
+            alert(res.data.message || "Logout successful")
+            setUserName(null)
+            sessionStorage.removeItem('students')
             navigate('/login')
         } catch (error) {
             alert(res.data.message || "Logout failed");

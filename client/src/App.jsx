@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <>
-      <Header userName={userName} />
+      <Header userName={userName} setUserName={setUserName} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login setUserName={setUserName} />} />
