@@ -9,6 +9,9 @@ const Header = ({ userName, setUserName }) => {
     const navigate = useNavigate();
     const handleLogout = async () => {
         try {
+            const confirmLogout = window.confirm("Are you sure you want to logout?")
+            if (!confirmLogout) return;
+
             const res = await axios.post('/auth/logout')
             alert(res.data.message || "Logout successful")
             setUserName(null)
