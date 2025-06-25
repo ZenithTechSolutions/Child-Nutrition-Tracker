@@ -5,7 +5,7 @@ import { useRef, useState, useEffect } from "react"
 import axios from "axios"
 import "../styles/header.css"
 
-const Header = ({ userName }) => {
+const Header = ({ userName, setUserName }) => {
   const [dropdown, setDropdown] = useState(false)
   const dropdownRef = useRef(null)
   const navigate = useNavigate()
@@ -20,8 +20,10 @@ const Header = ({ userName }) => {
       if (!conformLogout) return
 
       await axios.post("/auth/logout")
-      sessionStorage.removeItem("students")
+      setUserName(null)
+      setDropdown(false)
       navigate('/login')
+      sessionStorage.removeItem("students")
     } catch (error) {
       console.error("Logout failed:", error)
     }
