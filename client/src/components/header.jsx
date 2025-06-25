@@ -1,36 +1,41 @@
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCircleUser,faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
-import "../styles/header.css";
-import { Link } from "react-router-dom";
-import { useRef, useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
+import { Link, useNavigate } from "react-router-dom"
+import { useRef, useState, useEffect } from "react"
+import axios from "axios"
+import "../styles/header.css"
 
 const Header = ({ userName }) => {
-  const [dropdown, setDropdown] = useState(false);
-  const dropdownRef = useRef(null);
+  const [dropdown, setDropdown] = useState(false)
+  const dropdownRef = useRef(null)
+  const navigate = useNavigate()
 
   const toggledropdown = () => {
-    setDropdown(!dropdown);
-  };
+    setDropdown(!dropdown)
+  }
 
   const handleLogout = async () => {
     try {
-      await axios.post("/auth/logout", {}, { withCredentials: true });
-      window.location.href = "/login";
+      const conformLogout = window.confirm("Are you sure you want to logout?")
+      if (!conformLogout) return
+
+      await axios.post("/auth/logout")
+      sessionStorage.removeItem("students")
+      navigate('/login')
     } catch (error) {
-      console.error("Logout failed:", error);
+      console.error("Logout failed:", error)
     }
-  };
+  }
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdown(false);
+        setDropdown(false)
       }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   return (
     <>
@@ -67,7 +72,7 @@ const Header = ({ userName }) => {
         </div>
       </header>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
