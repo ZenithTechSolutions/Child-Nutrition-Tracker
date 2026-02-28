@@ -7,7 +7,6 @@ const userModel = new Schema({
     state: String,
     district: String,
     taluk: String,
-    students: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
     bills: [{ type: Schema.Types.ObjectId, ref: 'Bill' }]
 });
 

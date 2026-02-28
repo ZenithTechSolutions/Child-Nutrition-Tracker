@@ -60,6 +60,12 @@
 .dropdown-item:hover {
   background-color: rgb(222, 222, 222);
 }
+
 .profile-btn{
   background-color: #ff4e6d;
+}
+
+.profile-btn:hover{
+  background-color: #ffbd45;
+  cursor: pointer;
 }

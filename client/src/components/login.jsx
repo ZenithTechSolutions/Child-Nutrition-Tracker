@@ -1,19 +1,27 @@
 import { FaPhone } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Login = ({ setUserName }) => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     number: "",
-    password: ""
+    password: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
+
+  // ✅ Check if user is already logged in
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/"); // Redirect to home
+    }
+  }, []);
 
   const handleLogin = async () => {
     try {
@@ -21,21 +29,20 @@ const Login = ({ setUserName }) => {
 
       // 1.login
       const response = await axios.post("/auth/login", loginData);
+      localStorage.setItem("token", response.data.token);
       alert(response.data.message);
-      navigate('/');
+      navigate("/");
 
       // 2.Get user
       const res = await axios.get("/auth/getUser");
       setUserName(res.data.name);
 
       // 3.Get students
-      const studentres = await axios.get("/student/all")
+      const studentres = await axios.get("/student/all");
       sessionStorage.setItem("students", JSON.stringify(studentres.data));
-
     } catch (err) {
       alert(err.response?.data?.message || "Login failed");
-    }
-    finally {
+    } finally {
       setIsLoading(false);
     }
   };
@@ -57,7 +64,6 @@ const Login = ({ setUserName }) => {
           </div>
 
           <div className="form-container">
-
             <div className="input-box">
               <FaPhone className="icon" />
               <form className="loginForm" onSubmit={(e) => e.preventDefault()}>
@@ -99,9 +105,13 @@ const Login = ({ setUserName }) => {
 
             <p className="forgot-link">Forgot MPIN?</p>
 
-            <button onClick={isLoading ? null : handleLogin}>{isLoading ? "Loading" : "Login"}</button>
+            <button onClick={isLoading ? null : handleLogin}>
+              {isLoading ? "Loading" : "Login"}
+            </button>
 
-            <p>Don't Have An Account? <Link to='/register'>Register</Link> </p>
+            <p>
+              Don't Have An Account? <Link to="/register">Register</Link>{" "}
+            </p>
           </div>
         </div>
       </div>

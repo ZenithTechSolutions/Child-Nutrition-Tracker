@@ -16,15 +16,26 @@ router.get('/all', authMiddleware, async (req, res) => {
 
 // Add new student
 router.post('/add-student', authMiddleware, async (req, res) => {
-  const { name, dob, doj, age, height, weight, fathers_name, mothers_name, address, contact } = req.body;
+  const {
+    name,
+    dob,
+    doj,
+    age,
+    height,
+    weight,
+    fathersName,
+    mothersName,
+    address,
+    contact,
+  } = req.body;
   try {
     const student = new Student({
       name,
       doj,
       dob,
       age,
-      fathers_name,
-      mothers_name,
+      fathersName,
+      mothersName,
       address,
       contact,
       user: req.user.userId,

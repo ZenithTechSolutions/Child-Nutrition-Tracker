@@ -83,6 +83,14 @@
   border-bottom: 1px solid gray;
 }
 
+.bene-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 3px solid black;
+}
+
 .bene-detail:hover {
   background: #e0e0e0;
 }
